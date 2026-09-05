@@ -1,6 +1,10 @@
-import type { ReactNode } from "react";
+import type { AppShellProps } from "./AppShell";
 
-export interface ShellProps {
-  children?: ReactNode;
-  className?: string;
-}
+export * from "./AppShell";
+export * from "./Header";
+export * from "./FooterMount";
+
+/**
+ * Backward-compatible alias for AppShellProps.
+ */
+export type ShellProps = AppShellProps;

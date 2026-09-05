@@ -1,8 +1,411 @@
 /**
- * Pasgerflit Architecture Design Tokens & Theme Extension
+ * Pasgerflit Design System — Centralized Design Tokens
+ *
+ * Visual Foundation: Aviation civilization, modern airport infrastructure,
+ * atmospheric travel, evening sky, and technological clarity.
+ *
+ * Structure:
+ * 1. Raw / Primitive Value Scales (colors, dimensions, curves)
+ * 2. Semantic Tokens (Surfaces, Text, Borders, Accents, Statuses, Focus, Layout)
+ * 3. Responsive Fluid Scales (clamp-based typography, spacing, gutters)
+ * 4. Dark Mode Semantic Adaptations
  */
 
+/* ==========================================================================
+   1. Raw / Primitive Value Tokens
+   ========================================================================== */
+
 :root {
-  --color-brand-primary: #0284c7;
-  --color-brand-secondary: #0f172a;
+  /* --- Aviation Neutrals (Atmospheric Twilight Slate) --- */
+  --pf-raw-slate-25: #fafbfc;
+  --pf-raw-slate-50: #f6f8fa;
+  --pf-raw-slate-100: #edf1f5;
+  --pf-raw-slate-200: #e2e8f0;
+  --pf-raw-slate-300: #cbd5e1;
+  --pf-raw-slate-400: #94a3b8;
+  --pf-raw-slate-500: #64748b;
+  --pf-raw-slate-600: #475569;
+  --pf-raw-slate-700: #334155;
+  --pf-raw-slate-800: #1e2638;
+  --pf-raw-slate-850: #151c2a;
+  --pf-raw-slate-900: #0e131d;
+  --pf-raw-slate-950: #080b11;
+
+  /* --- Primary Accent (Aviation Horizon Azure) --- */
+  --pf-raw-azure-50: #f0f7fe;
+  --pf-raw-azure-100: #e0effe;
+  --pf-raw-azure-200: #bae0fd;
+  --pf-raw-azure-300: #7cc2fa;
+  --pf-raw-azure-400: #38a0f4;
+  --pf-raw-azure-500: #0f82df;
+  --pf-raw-azure-600: #0267ba;
+  --pf-raw-azure-700: #025196;
+  --pf-raw-azure-800: #06457c;
+  --pf-raw-azure-900: #0a3a66;
+
+  /* --- Secondary Accent (Runway Evening Amber) --- */
+  --pf-raw-amber-50: #fffbeb;
+  --pf-raw-amber-100: #fef3c7;
+  --pf-raw-amber-200: #fde68a;
+  --pf-raw-amber-300: #fcd34d;
+  --pf-raw-amber-400: #fbbf24;
+  --pf-raw-amber-500: #f59e0b;
+  --pf-raw-amber-600: #d97706;
+  --pf-raw-amber-700: #b45309;
+  --pf-raw-amber-800: #92400e;
+  --pf-raw-amber-900: #78350f;
+
+  /* --- Status Indicators: Success (Clear / Active / On Time) --- */
+  --pf-raw-emerald-50: #ecfdf5;
+  --pf-raw-emerald-100: #d1fae5;
+  --pf-raw-emerald-200: #a7f3d0;
+  --pf-raw-emerald-400: #34d399;
+  --pf-raw-emerald-500: #10b981;
+  --pf-raw-emerald-600: #059669;
+  --pf-raw-emerald-700: #047857;
+
+  /* --- Status Indicators: Danger (Critical / Cancelled) --- */
+  --pf-raw-crimson-50: #fef2f2;
+  --pf-raw-crimson-100: #fee2e2;
+  --pf-raw-crimson-200: #fecaca;
+  --pf-raw-crimson-400: #f87171;
+  --pf-raw-crimson-500: #ef4444;
+  --pf-raw-crimson-600: #dc2626;
+  --pf-raw-crimson-700: #b91c1c;
+
+  /* --- Motion Easing Curves --- */
+  --pf-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --pf-ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --pf-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+
+  /* --- Motion Durations --- */
+  --pf-duration-instant: 75ms;
+  --pf-duration-fast: 150ms;
+  --pf-duration-base: 240ms;
+  --pf-duration-slow: 360ms;
+  --pf-duration-deliberate: 500ms;
+
+  /* Composite Transition Presets */
+  --pf-transition-fast: var(--pf-duration-fast) var(--pf-ease-standard);
+  --pf-transition-base: var(--pf-duration-base) var(--pf-ease-standard);
+  --pf-transition-smooth: var(--pf-duration-slow) var(--pf-ease-decelerate);
+
+  /* --- Radii Scale --- */
+  --pf-radius-none: 0;
+  --pf-radius-xs: 0.125rem;
+  --pf-radius-sm: 0.25rem;
+  --pf-radius-md: 0.375rem;
+  --pf-radius-lg: 0.5rem;
+  --pf-radius-xl: 0.75rem;
+  --pf-radius-2xl: 1rem;
+  --pf-radius-full: 9999px;
+
+  /* --- Fluid Spacing Scale (320px -> 1440px) --- */
+  --pf-space-4xs: clamp(0.0625rem, 0.05rem + 0.05vw, 0.125rem);
+  --pf-space-3xs: clamp(0.125rem, 0.1rem + 0.125vw, 0.25rem);
+  --pf-space-2xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --pf-space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --pf-space-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+  --pf-space-md: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  --pf-space-lg: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  --pf-space-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --pf-space-2xl: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+  --pf-space-3xl: clamp(3.5rem, 2.75rem + 3.75vw, 6rem);
+  --pf-space-4xl: clamp(5rem, 3.75rem + 6.25vw, 9rem);
+
+  /* --- Typography Font Families --- */
+  --pf-font-sans: var(--font-geist-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  --pf-font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace);
+
+  /* --- Font Weights --- */
+  --pf-font-weight-regular: 400;
+  --pf-font-weight-medium: 500;
+  --pf-font-weight-semibold: 600;
+  --pf-font-weight-bold: 700;
+
+  /* --- Fluid Typography Scale (320px -> 1440px) --- */
+  --pf-font-size-2xs: clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+  --pf-font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --pf-font-size-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --pf-font-size-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
+  --pf-font-size-lg: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  --pf-font-size-xl: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+  --pf-font-size-2xl: clamp(1.5rem, 1.35rem + 0.9vw, 1.875rem);
+  --pf-font-size-3xl: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+  --pf-font-size-4xl: clamp(2.25rem, 1.85rem + 2.2vw, 3.25rem);
+  --pf-font-size-5xl: clamp(2.75rem, 2.1rem + 3.2vw, 4.25rem);
+
+  /* --- Semantic Typography Scale Mappings --- */
+  --pf-font-size-display: var(--pf-font-size-5xl);
+  --pf-font-size-title: var(--pf-font-size-3xl);
+  --pf-font-size-section: var(--pf-font-size-2xl);
+  --pf-font-size-subsection: var(--pf-font-size-xl);
+  --pf-font-size-lead: var(--pf-font-size-lg);
+  --pf-font-size-body: var(--pf-font-size-base);
+  --pf-font-size-small: var(--pf-font-size-sm);
+  --pf-font-size-caption: var(--pf-font-size-xs);
+  --pf-font-size-label: var(--pf-font-size-sm);
+  --pf-font-size-metadata: var(--pf-font-size-xs);
+  --pf-font-size-operational: var(--pf-font-size-xs);
+
+  /* --- Line Heights --- */
+  --pf-leading-none: 1;
+  --pf-leading-tight: 1.2;
+  --pf-leading-snug: 1.35;
+  --pf-leading-normal: 1.55;
+  --pf-leading-relaxed: 1.7;
+
+  /* --- Letter Spacing (Tracking) --- */
+  --pf-tracking-tighter: -0.03em;
+  --pf-tracking-tight: -0.015em;
+  --pf-tracking-normal: 0em;
+  --pf-tracking-wide: 0.03em;
+  --pf-tracking-wider: 0.06em;
+  --pf-tracking-widest: 0.1em;
+
+  /* --- Layout Boundaries & Gutters --- */
+  --pf-width-readable: 68ch;
+  --pf-width-prose: 75ch;
+  --pf-container-sm: 640px;
+  --pf-container-md: 768px;
+  --pf-container-lg: 1024px;
+  --pf-container-xl: 1280px;
+  --pf-container-2xl: 1440px;
+  --pf-container-wide: 1720px;
+  --pf-gutter: clamp(1rem, 0.75rem + 1.5vw, 2.5rem);
+  --pf-section-space: clamp(2.5rem, 1.8rem + 3vw, 5.5rem);
+}
+
+/* ==========================================================================
+   2. Semantic Design Tokens (Light Mode Default)
+   ========================================================================== */
+
+:root {
+  /* Surfaces & Backgrounds */
+  --pf-surface-page: var(--pf-raw-slate-50);
+  --pf-surface-1: #ffffff;
+  --pf-surface-2: var(--pf-raw-slate-100);
+  --pf-surface-3: var(--pf-raw-slate-200);
+  --pf-surface-elevated: #ffffff;
+  --pf-surface-glass: rgba(255, 255, 255, 0.85);
+  --pf-surface-overlay: rgba(8, 11, 17, 0.45);
+
+  /* Typography Colors */
+  --pf-text-primary: var(--pf-raw-slate-900);
+  --pf-text-secondary: var(--pf-raw-slate-700);
+  --pf-text-muted: var(--pf-raw-slate-500);
+  --pf-text-faint: var(--pf-raw-slate-400);
+  --pf-text-inverse: var(--pf-raw-slate-50);
+
+  /* Borders & Dividers */
+  --pf-border-subtle: var(--pf-raw-slate-100);
+  --pf-border-default: var(--pf-raw-slate-200);
+  --pf-border-strong: var(--pf-raw-slate-300);
+  --pf-border-glass: rgba(255, 255, 255, 0.6);
+
+  /* Primary Accent (Aviation Horizon Azure) */
+  --pf-accent-primary: var(--pf-raw-azure-600);
+  --pf-accent-hover: var(--pf-raw-azure-700);
+  --pf-accent-active: var(--pf-raw-azure-800);
+  --pf-accent-subtle: var(--pf-raw-azure-100);
+  --pf-accent-fg: #ffffff;
+
+  /* Secondary Accent (Runway Evening Amber) */
+  --pf-accent-secondary: var(--pf-raw-amber-600);
+  --pf-accent-secondary-hover: var(--pf-raw-amber-700);
+  --pf-accent-secondary-active: var(--pf-raw-amber-800);
+  --pf-accent-secondary-subtle: var(--pf-raw-amber-100);
+  --pf-accent-secondary-fg: #ffffff;
+
+  /* Focus Ring */
+  --pf-focus-ring-color: var(--pf-accent-primary);
+  --pf-focus-ring-width: 2px;
+  --pf-focus-ring-offset: 2px;
+
+  /* Status States: Neutral */
+  --pf-status-neutral: var(--pf-text-secondary);
+  --pf-status-neutral-bg: var(--pf-surface-2);
+  --pf-status-neutral-border: var(--pf-border-default);
+
+  /* Status States: Success */
+  --pf-status-success: var(--pf-raw-emerald-600);
+  --pf-status-success-bg: var(--pf-raw-emerald-50);
+  --pf-status-success-border: var(--pf-raw-emerald-200);
+
+  /* Status States: Warning */
+  --pf-status-warning: var(--pf-raw-amber-600);
+  --pf-status-warning-bg: var(--pf-raw-amber-50);
+  --pf-status-warning-border: var(--pf-raw-amber-200);
+
+  /* Status States: Danger */
+  --pf-status-danger: var(--pf-raw-crimson-600);
+  --pf-status-danger-bg: var(--pf-raw-crimson-50);
+  --pf-status-danger-border: var(--pf-raw-crimson-200);
+
+  /* Status States: Information */
+  --pf-status-info: var(--pf-raw-azure-600);
+  --pf-status-info-bg: var(--pf-raw-azure-50);
+  --pf-status-info-border: var(--pf-raw-azure-200);
+
+  /* Control Sizing & Interaction */
+  --pf-control-height-sm: 2rem;
+  --pf-control-height-md: 2.5rem;
+  --pf-control-height-lg: 3rem;
+  --pf-opacity-disabled: 0.45;
+
+  /* Shadows */
+  --pf-shadow-xs: 0 1px 2px 0 rgb(14 19 29 / 0.04);
+  --pf-shadow-sm: 0 1px 3px 0 rgb(14 19 29 / 0.06), 0 1px 2px -1px rgb(14 19 29 / 0.04);
+  --pf-shadow-md: 0 4px 6px -1px rgb(14 19 29 / 0.07), 0 2px 4px -2px rgb(14 19 29 / 0.04);
+  --pf-shadow-lg: 0 10px 15px -3px rgb(14 19 29 / 0.08), 0 4px 6px -4px rgb(14 19 29 / 0.03);
+  --pf-shadow-xl: 0 20px 25px -5px rgb(14 19 29 / 0.1), 0 8px 10px -6px rgb(14 19 29 / 0.04);
+  --pf-shadow-ambient: 0 0 0 1px var(--pf-border-default), var(--pf-shadow-sm);
+
+  /* Backward Compatibility Aliases */
+  --color-brand-primary: var(--pf-accent-primary);
+  --color-brand-secondary: var(--pf-text-primary);
+}
+
+/* ==========================================================================
+   3. Semantic Design Tokens (Dark Mode)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surfaces & Backgrounds */
+    --pf-surface-page: var(--pf-raw-slate-950);
+    --pf-surface-1: var(--pf-raw-slate-900);
+    --pf-surface-2: var(--pf-raw-slate-850);
+    --pf-surface-3: var(--pf-raw-slate-800);
+    --pf-surface-elevated: var(--pf-raw-slate-850);
+    --pf-surface-glass: rgba(14, 19, 29, 0.85);
+    --pf-surface-overlay: rgba(4, 6, 10, 0.78);
+
+    /* Typography Colors */
+    --pf-text-primary: var(--pf-raw-slate-100);
+    --pf-text-secondary: var(--pf-raw-slate-300);
+    --pf-text-muted: var(--pf-raw-slate-400);
+    --pf-text-faint: var(--pf-raw-slate-600);
+    --pf-text-inverse: var(--pf-raw-slate-950);
+
+    /* Borders & Dividers */
+    --pf-border-subtle: var(--pf-raw-slate-850);
+    --pf-border-default: #1e283a;
+    --pf-border-strong: #2a374e;
+    --pf-border-glass: rgba(255, 255, 255, 0.08);
+
+    /* Primary Accent (Twilight Sky Azure) */
+    --pf-accent-primary: var(--pf-raw-azure-400);
+    --pf-accent-hover: var(--pf-raw-azure-300);
+    --pf-accent-active: var(--pf-raw-azure-200);
+    --pf-accent-subtle: rgba(56, 160, 244, 0.14);
+    --pf-accent-fg: #051a2e;
+
+    /* Secondary Accent (Runway Amber Beacon) */
+    --pf-accent-secondary: var(--pf-raw-amber-400);
+    --pf-accent-secondary-hover: var(--pf-raw-amber-300);
+    --pf-accent-secondary-active: var(--pf-raw-amber-200);
+    --pf-accent-secondary-subtle: rgba(251, 191, 36, 0.14);
+    --pf-accent-secondary-fg: #3b1b04;
+
+    /* Status States: Neutral */
+    --pf-status-neutral: var(--pf-raw-slate-300);
+    --pf-status-neutral-bg: var(--pf-raw-slate-850);
+    --pf-status-neutral-border: var(--pf-border-default);
+
+    /* Status States: Success */
+    --pf-status-success: var(--pf-raw-emerald-400);
+    --pf-status-success-bg: rgba(52, 211, 153, 0.12);
+    --pf-status-success-border: rgba(52, 211, 153, 0.25);
+
+    /* Status States: Warning */
+    --pf-status-warning: var(--pf-raw-amber-400);
+    --pf-status-warning-bg: rgba(251, 191, 36, 0.12);
+    --pf-status-warning-border: rgba(251, 191, 36, 0.25);
+
+    /* Status States: Danger */
+    --pf-status-danger: var(--pf-raw-crimson-400);
+    --pf-status-danger-bg: rgba(248, 113, 113, 0.12);
+    --pf-status-danger-border: rgba(248, 113, 113, 0.25);
+
+    /* Status States: Information */
+    --pf-status-info: var(--pf-raw-azure-400);
+    --pf-status-info-bg: rgba(56, 160, 244, 0.12);
+    --pf-status-info-border: rgba(56, 160, 244, 0.25);
+
+    /* Shadows (Atmospheric Depth) */
+    --pf-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+    --pf-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+    --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.55), 0 2px 4px -2px rgb(0 0 0 / 0.35);
+    --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.65), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+    --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.75), 0 8px 10px -6px rgb(0 0 0 / 0.55);
+    --pf-shadow-ambient: 0 0 0 1px var(--pf-border-default), var(--pf-shadow-sm);
+  }
+}
+
+[data-theme="dark"] {
+  /* Surfaces & Backgrounds */
+  --pf-surface-page: var(--pf-raw-slate-950);
+  --pf-surface-1: var(--pf-raw-slate-900);
+  --pf-surface-2: var(--pf-raw-slate-850);
+  --pf-surface-3: var(--pf-raw-slate-800);
+  --pf-surface-elevated: var(--pf-raw-slate-850);
+  --pf-surface-glass: rgba(14, 19, 29, 0.85);
+  --pf-surface-overlay: rgba(4, 6, 10, 0.78);
+
+  /* Typography Colors */
+  --pf-text-primary: var(--pf-raw-slate-100);
+  --pf-text-secondary: var(--pf-raw-slate-300);
+  --pf-text-muted: var(--pf-raw-slate-400);
+  --pf-text-faint: var(--pf-raw-slate-600);
+  --pf-text-inverse: var(--pf-raw-slate-950);
+
+  /* Borders & Dividers */
+  --pf-border-subtle: var(--pf-raw-slate-850);
+  --pf-border-default: #1e283a;
+  --pf-border-strong: #2a374e;
+  --pf-border-glass: rgba(255, 255, 255, 0.08);
+
+  /* Primary Accent */
+  --pf-accent-primary: var(--pf-raw-azure-400);
+  --pf-accent-hover: var(--pf-raw-azure-300);
+  --pf-accent-active: var(--pf-raw-azure-200);
+  --pf-accent-subtle: rgba(56, 160, 244, 0.14);
+  --pf-accent-fg: #051a2e;
+
+  /* Secondary Accent */
+  --pf-accent-secondary: var(--pf-raw-amber-400);
+  --pf-accent-secondary-hover: var(--pf-raw-amber-300);
+  --pf-accent-secondary-active: var(--pf-raw-amber-200);
+  --pf-accent-secondary-subtle: rgba(251, 191, 36, 0.14);
+  --pf-accent-secondary-fg: #3b1b04;
+
+  /* Status States */
+  --pf-status-neutral: var(--pf-raw-slate-300);
+  --pf-status-neutral-bg: var(--pf-raw-slate-850);
+  --pf-status-neutral-border: var(--pf-border-default);
+
+  --pf-status-success: var(--pf-raw-emerald-400);
+  --pf-status-success-bg: rgba(52, 211, 153, 0.12);
+  --pf-status-success-border: rgba(52, 211, 153, 0.25);
+
+  --pf-status-warning: var(--pf-raw-amber-400);
+  --pf-status-warning-bg: rgba(251, 191, 36, 0.12);
+  --pf-status-warning-border: rgba(251, 191, 36, 0.25);
+
+  --pf-status-danger: var(--pf-raw-crimson-400);
+  --pf-status-danger-bg: rgba(248, 113, 113, 0.12);
+  --pf-status-danger-border: rgba(248, 113, 113, 0.25);
+
+  --pf-status-info: var(--pf-raw-azure-400);
+  --pf-status-info-bg: rgba(56, 160, 244, 0.12);
+  --pf-status-info-border: rgba(56, 160, 244, 0.25);
+
+  /* Shadows */
+  --pf-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --pf-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.55), 0 2px 4px -2px rgb(0 0 0 / 0.35);
+  --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.65), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+  --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.75), 0 8px 10px -6px rgb(0 0 0 / 0.55);
+  --pf-shadow-ambient: 0 0 0 1px var(--pf-border-default), var(--pf-shadow-sm);
 }

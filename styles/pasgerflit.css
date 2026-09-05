@@ -2,190 +2,14 @@
  * Pasgerflit Design System — Presentation & Responsive Foundation
  *
  * Designed for viewport range: 320px through ultrawide displays.
- * Aesthetic alignment: Aviation, modern civilization, airport architecture,
- * evening sky, and technological clarity.
+ * Aesthetic alignment: Aviation civilization, modern infrastructure,
+ * airport architecture, evening sky, and technological clarity.
  */
 
-/* ==========================================================================
-   1. Design Tokens & Semantic Custom Properties
-   ========================================================================== */
-
-:root {
-  /* Surface / Background Colors (Light Mode) */
-  --pf-surface-page: #f8fafc;
-  --pf-surface-1: #ffffff;
-  --pf-surface-2: #f1f5f9;
-  --pf-surface-3: #e2e8f0;
-  --pf-surface-elevated: #ffffff;
-  --pf-surface-glass: rgba(255, 255, 255, 0.82);
-  --pf-surface-overlay: rgba(15, 23, 42, 0.45);
-
-  /* Foreground & Typography Colors */
-  --pf-text-primary: #0f172a;
-  --pf-text-secondary: #334155;
-  --pf-text-muted: #64748b;
-  --pf-text-faint: #94a3b8;
-  --pf-text-inverse: #f8fafc;
-
-  /* Borders & Dividers */
-  --pf-border-subtle: #f1f5f9;
-  --pf-border-default: #e2e8f0;
-  --pf-border-strong: #cbd5e1;
-  --pf-border-glass: rgba(255, 255, 255, 0.6);
-
-  /* Accents (Aviation Sky Azure & Evening Horizon Amber) */
-  --pf-accent-primary: #0284c7;
-  --pf-accent-hover: #0369a1;
-  --pf-accent-active: #075985;
-  --pf-accent-subtle: #e0f2fe;
-  --pf-accent-fg: #ffffff;
-  --pf-accent-secondary: #d97706;
-
-  /* Focus States */
-  --pf-focus-ring-color: var(--pf-accent-primary);
-  --pf-focus-ring-width: 2px;
-  --pf-focus-ring-offset: 2px;
-
-  /* Fluid Spacing Scale (320px -> 1440px) */
-  --pf-space-3xs: clamp(0.125rem, 0.1rem + 0.125vw, 0.25rem);
-  --pf-space-2xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
-  --pf-space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
-  --pf-space-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
-  --pf-space-md: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
-  --pf-space-lg: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
-  --pf-space-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
-  --pf-space-2xl: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
-  --pf-space-3xl: clamp(3.5rem, 2.75rem + 3.75vw, 6rem);
-
-  /* Border Radii */
-  --pf-radius-xs: 0.125rem;
-  --pf-radius-sm: 0.25rem;
-  --pf-radius-md: 0.5rem;
-  --pf-radius-lg: 0.75rem;
-  --pf-radius-xl: 1rem;
-  --pf-radius-2xl: 1.5rem;
-  --pf-radius-full: 9999px;
-
-  /* Elevation & Shadows */
-  --pf-shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
-  --pf-shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.07), 0 2px 4px -2px rgb(15 23 42 / 0.04);
-  --pf-shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.03);
-  --pf-shadow-xl: 0 20px 25px -5px rgb(15 23 42 / 0.1), 0 8px 10px -6px rgb(15 23 42 / 0.04);
-
-  /* Fluid Typography Scale (320px -> 1440px) */
-  --pf-font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
-  --pf-font-size-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
-  --pf-font-size-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
-  --pf-font-size-lg: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
-  --pf-font-size-xl: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
-  --pf-font-size-2xl: clamp(1.5rem, 1.35rem + 0.9vw, 1.875rem);
-  --pf-font-size-3xl: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
-  --pf-font-size-4xl: clamp(2.25rem, 1.85rem + 2.2vw, 3.25rem);
-  --pf-font-size-5xl: clamp(2.75rem, 2.1rem + 3.2vw, 4.25rem);
-
-  /* Line Heights & Letter Spacing */
-  --pf-leading-none: 1;
-  --pf-leading-tight: 1.2;
-  --pf-leading-snug: 1.35;
-  --pf-leading-normal: 1.5;
-  --pf-leading-relaxed: 1.65;
-  --pf-tracking-tight: -0.02em;
-  --pf-tracking-normal: 0em;
-  --pf-tracking-wide: 0.04em;
-  --pf-tracking-wider: 0.08em;
-
-  /* Layout Boundaries & Gutters */
-  --pf-width-readable: 68ch;
-  --pf-width-prose: 75ch;
-  --pf-container-sm: 640px;
-  --pf-container-md: 768px;
-  --pf-container-lg: 1024px;
-  --pf-container-xl: 1280px;
-  --pf-container-2xl: 1440px;
-  --pf-container-wide: 1720px;
-  --pf-gutter: clamp(1rem, 0.75rem + 1.5vw, 2.5rem);
-  --pf-section-space: clamp(2.5rem, 1.8rem + 3vw, 5.5rem);
-
-  /* Transition Durations */
-  --pf-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --pf-transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
-  --pf-transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
-}
+@import "./tokens.css";
 
 /* ==========================================================================
-   2. Dark Mode Tokens (System & Explicit)
-   ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --pf-surface-page: #090d14;
-    --pf-surface-1: #0f1726;
-    --pf-surface-2: #162032;
-    --pf-surface-3: #1e2c44;
-    --pf-surface-elevated: #162032;
-    --pf-surface-glass: rgba(15, 23, 38, 0.82);
-    --pf-surface-overlay: rgba(3, 7, 18, 0.75);
-
-    --pf-text-primary: #f1f5f9;
-    --pf-text-secondary: #cbd5e1;
-    --pf-text-muted: #8493a8;
-    --pf-text-faint: #475569;
-    --pf-text-inverse: #090d14;
-
-    --pf-border-subtle: #162032;
-    --pf-border-default: #223048;
-    --pf-border-strong: #334464;
-    --pf-border-glass: rgba(255, 255, 255, 0.08);
-
-    --pf-accent-primary: #38bdf8;
-    --pf-accent-hover: #7dd3fc;
-    --pf-accent-active: #bae6fd;
-    --pf-accent-subtle: rgba(56, 189, 248, 0.12);
-    --pf-accent-fg: #082f49;
-    --pf-accent-secondary: #fbbf24;
-
-    --pf-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-    --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-    --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-    --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
-  }
-}
-
-[data-theme="dark"] {
-  --pf-surface-page: #090d14;
-  --pf-surface-1: #0f1726;
-  --pf-surface-2: #162032;
-  --pf-surface-3: #1e2c44;
-  --pf-surface-elevated: #162032;
-  --pf-surface-glass: rgba(15, 23, 38, 0.82);
-  --pf-surface-overlay: rgba(3, 7, 18, 0.75);
-
-  --pf-text-primary: #f1f5f9;
-  --pf-text-secondary: #cbd5e1;
-  --pf-text-muted: #8493a8;
-  --pf-text-faint: #475569;
-  --pf-text-inverse: #090d14;
-
-  --pf-border-subtle: #162032;
-  --pf-border-default: #223048;
-  --pf-border-strong: #334464;
-  --pf-border-glass: rgba(255, 255, 255, 0.08);
-
-  --pf-accent-primary: #38bdf8;
-  --pf-accent-hover: #7dd3fc;
-  --pf-accent-active: #bae6fd;
-  --pf-accent-subtle: rgba(56, 189, 248, 0.12);
-  --pf-accent-fg: #082f49;
-  --pf-accent-secondary: #fbbf24;
-
-  --pf-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-  --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-  --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
-}
-
-/* ==========================================================================
-   3. Universal Box Sizing, Accessibility & Media Resets
+   1. Universal Box Sizing, Accessibility & Media Resets
    ========================================================================== */
 
 *,
@@ -207,6 +31,7 @@ body {
 
 body {
   margin: 0;
+  font-family: var(--pf-font-sans);
   font-size: var(--pf-font-size-base);
   line-height: var(--pf-leading-normal);
   color: var(--pf-text-primary);
@@ -214,6 +39,42 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading Defaults */
+h1, h2, h3, h4, h5, h6 {
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  font-family: var(--pf-font-sans);
+  color: var(--pf-text-primary);
+  font-weight: var(--pf-font-weight-semibold);
+}
+
+h1 {
+  font-size: var(--pf-font-size-title);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+}
+
+h2 {
+  font-size: var(--pf-font-size-section);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+}
+
+h3 {
+  font-size: var(--pf-font-size-subsection);
+  line-height: var(--pf-leading-snug);
+}
+
+h4 {
+  font-size: var(--pf-font-size-lg);
+  line-height: var(--pf-leading-normal);
+}
+
+h5, h6 {
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
 }
 
 /* Text Wrapping & Overflow Resilience (crucial for narrow 320px screens) */
@@ -266,8 +127,210 @@ textarea {
 }
 
 /* ==========================================================================
-   4. Reusable Layout Primitives
+   2. Semantic Typography Hierarchy & Visual Language Primitives
    ========================================================================== */
+
+/* Major Display Statement (Hero headlines, civilization proclamations) */
+.pf-text-display {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-display);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+}
+
+/* Page Title (Primary document/page heading) */
+.pf-text-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-title);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+}
+
+/* Section Heading (Major section divider) */
+.pf-text-section-heading {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-section);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+}
+
+/* Subsection Heading (Module/card/group heading) */
+.pf-text-subsection-heading {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-subsection);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-normal);
+  color: var(--pf-text-primary);
+}
+
+/* Lead (Editorial intro / section lead paragraph) */
+.pf-text-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lead);
+  font-weight: var(--pf-font-weight-regular);
+  line-height: var(--pf-leading-relaxed);
+  letter-spacing: var(--pf-tracking-normal);
+  color: var(--pf-text-secondary);
+  max-width: var(--pf-width-readable);
+}
+
+/* Standard Body Text */
+.pf-text-body {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-body);
+  font-weight: var(--pf-font-weight-regular);
+  line-height: var(--pf-leading-normal);
+  letter-spacing: var(--pf-tracking-normal);
+  color: var(--pf-text-primary);
+}
+
+/* Secondary / Small Body Text */
+.pf-text-body-secondary,
+.pf-text-small {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-small);
+  font-weight: var(--pf-font-weight-regular);
+  line-height: var(--pf-leading-normal);
+  letter-spacing: var(--pf-tracking-normal);
+  color: var(--pf-text-secondary);
+}
+
+/* Caption (Figures, annotations, credits) */
+.pf-text-caption {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-caption);
+  font-weight: var(--pf-font-weight-regular);
+  line-height: var(--pf-leading-normal);
+  letter-spacing: var(--pf-tracking-normal);
+  color: var(--pf-text-muted);
+}
+
+/* Label (Form labels, input descriptors, button text) */
+.pf-text-label {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-label);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-wide);
+  color: var(--pf-text-primary);
+}
+
+/* Metadata (Timestamps, version tags, categories, tabular-aligned) */
+.pf-text-metadata {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-metadata);
+  font-weight: var(--pf-font-weight-regular);
+  line-height: var(--pf-leading-normal);
+  letter-spacing: var(--pf-tracking-wide);
+  font-variant-numeric: tabular-nums;
+  color: var(--pf-text-muted);
+}
+
+/* Operational / Aviation Terminal Text (Flight numbers, IATA codes, runway telemetry) */
+.pf-text-operational {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-operational);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--pf-text-primary);
+}
+
+/* Navigation Link Typography */
+.pf-text-nav {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-none);
+  letter-spacing: var(--pf-tracking-wide);
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+}
+
+.pf-text-nav:hover {
+  color: var(--pf-text-primary);
+}
+
+.pf-text-nav[aria-current="page"] {
+  color: var(--pf-accent-primary);
+  font-weight: var(--pf-font-weight-semibold);
+}
+
+/* Editorial / Worldbuilding Reading Block */
+.pf-editorial,
+.pf-prose {
+  max-width: var(--pf-width-readable);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-body);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-primary);
+}
+
+.pf-editorial p,
+.pf-prose p {
+  margin-block-start: 0;
+  margin-block-end: var(--pf-space-md);
+}
+
+.pf-editorial p:last-child,
+.pf-prose p:last-child {
+  margin-block-end: 0;
+}
+
+.pf-editorial blockquote,
+.pf-prose blockquote {
+  margin-inline: 0;
+  margin-block: var(--pf-space-lg);
+  padding-inline-start: var(--pf-space-md);
+  border-inline-start: 2px solid var(--pf-accent-primary);
+  color: var(--pf-text-secondary);
+  font-style: italic;
+}
+
+.pf-editorial hr,
+.pf-prose hr {
+  border: none;
+  border-block-start: 1px solid var(--pf-border-default);
+  margin-block: var(--pf-space-xl);
+}
+
+/* ==========================================================================
+   3. Reusable Layout Primitives
+   ========================================================================== */
+
+/* Accessible Skip Link */
+.pf-skip-link {
+  position: absolute;
+  top: -9999px;
+  left: var(--pf-space-md);
+  z-index: 100;
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  background-color: var(--pf-surface-2);
+  color: var(--pf-text-primary);
+  border: 1px solid var(--pf-border-strong);
+  border-radius: var(--pf-radius-sm);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  text-decoration: none;
+  box-shadow: var(--pf-shadow-md);
+}
+
+.pf-skip-link:focus {
+  top: var(--pf-space-xs);
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
 
 /* Page Shell Primitive */
 .pf-shell {
@@ -279,6 +342,607 @@ textarea {
   max-width: 100%;
   background-color: var(--pf-surface-page);
   color: var(--pf-text-primary);
+}
+
+/* Page Shell Main Content Region */
+.pf-shell-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Page Shell Header Region */
+.pf-shell-header {
+  width: 100%;
+  background-color: var(--pf-surface-1);
+  border-block-end: 1px solid var(--pf-border-default);
+  position: relative;
+  z-index: 20;
+}
+
+.pf-shell-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-md);
+  min-height: clamp(3.5rem, 3rem + 1.5vw, 4.5rem);
+}
+
+.pf-shell-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-bold);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--pf-transition-fast);
+}
+
+.pf-shell-brand:hover {
+  color: var(--pf-accent-primary);
+}
+
+.pf-shell-brand:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+.pf-shell-brand-badge {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--pf-radius-sm);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-default);
+  color: var(--pf-accent-primary);
+  text-transform: uppercase;
+  line-height: var(--pf-leading-none);
+}
+
+/* ==========================================================================
+   Navigation System (Desktop & Responsive Mobile)
+   ========================================================================== */
+
+.pf-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* --- Desktop Navigation --- */
+.pf-nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--pf-space-lg);
+}
+
+.pf-nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--pf-space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pf-nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.pf-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-3xs);
+  position: relative;
+  padding-block: var(--pf-space-2xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  letter-spacing: var(--pf-tracking-wide);
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+  white-space: nowrap;
+}
+
+.pf-nav-link:hover {
+  color: var(--pf-text-primary);
+}
+
+.pf-nav-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+.pf-nav-link-active,
+.pf-nav-link[aria-current="page"] {
+  color: var(--pf-accent-primary);
+  font-weight: var(--pf-font-weight-semibold);
+}
+
+.pf-nav-active-pip {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--pf-accent-primary);
+  border-radius: var(--pf-radius-full);
+}
+
+.pf-nav-divider {
+  width: 1px;
+  height: 1.25rem;
+  background-color: var(--pf-border-default);
+}
+
+.pf-nav-utility {
+  display: flex;
+  align-items: center;
+}
+
+.pf-nav-external {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-3xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-text-muted);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+  white-space: nowrap;
+}
+
+.pf-nav-external:hover {
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-external:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+.pf-nav-external-icon {
+  font-size: 0.75em;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+/* --- Mobile Menu Trigger Button --- */
+.pf-nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+  min-height: 2.5rem;
+  padding: var(--pf-space-2xs) var(--pf-space-xs);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-sm);
+  color: var(--pf-text-primary);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--pf-transition-fast), border-color var(--pf-transition-fast), color var(--pf-transition-fast);
+  white-space: nowrap;
+}
+
+.pf-nav-toggle:hover {
+  background-color: var(--pf-surface-3);
+  border-color: var(--pf-border-strong);
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-toggle[aria-expanded="true"] {
+  background-color: var(--pf-surface-3);
+  border-color: var(--pf-border-strong);
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-toggle:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+.pf-nav-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pf-nav-toggle-label {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  letter-spacing: var(--pf-tracking-wider);
+  text-transform: uppercase;
+}
+
+/* --- Mobile Navigation Panel --- */
+.pf-nav-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: calc(100dvh - 4.5rem);
+  overflow-y: auto;
+  background-color: var(--pf-surface-1);
+  border-block-end: 1px solid var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-lg);
+  z-index: 50;
+  padding-block: var(--pf-space-md);
+}
+
+.pf-nav-panel[hidden] {
+  display: none !important;
+}
+
+.pf-nav-panel-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-md);
+}
+
+.pf-nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+}
+
+.pf-nav-section-title {
+  display: flex;
+  align-items: center;
+  border-block-end: 1px solid var(--pf-border-subtle);
+  padding-block-end: var(--pf-space-3xs);
+}
+
+.pf-nav-section-title span {
+  text-transform: uppercase;
+  letter-spacing: var(--pf-tracking-widest);
+}
+
+.pf-nav-mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+}
+
+.pf-nav-mobile-item {
+  display: flex;
+}
+
+.pf-nav-mobile-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  width: 100%;
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid transparent;
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--pf-text-primary);
+  transition: background-color var(--pf-transition-fast), border-color var(--pf-transition-fast), color var(--pf-transition-fast);
+}
+
+.pf-nav-mobile-link:hover {
+  background-color: var(--pf-surface-2);
+  border-color: var(--pf-border-subtle);
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-mobile-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+.pf-nav-mobile-link-active,
+.pf-nav-mobile-link[aria-current="page"] {
+  background-color: var(--pf-surface-2);
+  border-color: var(--pf-border-default);
+  border-inline-start: 3px solid var(--pf-accent-primary);
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-mobile-link-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pf-nav-mobile-label {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-snug);
+}
+
+.pf-nav-mobile-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  color: var(--pf-text-muted);
+  line-height: var(--pf-leading-normal);
+  margin-block-start: 0.125rem;
+}
+
+.pf-nav-active-badge {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--pf-radius-xs);
+  background-color: var(--pf-accent-subtle);
+  color: var(--pf-accent-primary);
+  border: 1px solid var(--pf-accent-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pf-nav-mobile-external-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+}
+
+.pf-nav-mobile-external-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  width: 100%;
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid transparent;
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--pf-text-secondary);
+  transition: background-color var(--pf-transition-fast), border-color var(--pf-transition-fast), color var(--pf-transition-fast);
+}
+
+.pf-nav-mobile-external-link:hover {
+  background-color: var(--pf-surface-2);
+  border-color: var(--pf-border-subtle);
+  color: var(--pf-accent-primary);
+}
+
+.pf-nav-mobile-external-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+/* --- Responsive Nav Breakpoint (1024px) --- */
+@media (min-width: 1024px) {
+  .pf-nav-toggle {
+    display: none !important;
+  }
+  .pf-nav-panel {
+    display: none !important;
+  }
+  .pf-nav-desktop {
+    display: flex;
+  }
+}
+
+@media (max-width: 1023px) {
+  .pf-nav-desktop {
+    display: none !important;
+  }
+  .pf-nav-toggle {
+    display: inline-flex;
+  }
+}
+
+/* ==========================================================================
+   Page Shell Footer & Utility Layer
+   ========================================================================== */
+
+.pf-shell-footer {
+  width: 100%;
+  background-color: var(--pf-surface-1);
+  border-block-start: 1px solid var(--pf-border-default);
+  margin-block-start: auto;
+}
+
+.pf-footer-inner {
+  padding-block: var(--pf-space-xl) var(--pf-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-lg);
+}
+
+.pf-footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--pf-space-xl);
+  flex-wrap: wrap;
+}
+
+/* --- Identity Section --- */
+.pf-footer-identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xs);
+  max-width: 20rem;
+}
+
+.pf-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-xs);
+  text-decoration: none;
+  color: var(--pf-text-primary);
+  transition: color var(--pf-transition-fast);
+}
+
+.pf-footer-brand:hover {
+  color: var(--pf-accent-primary);
+}
+
+.pf-footer-brand:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+.pf-footer-brand-name {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-bold);
+  letter-spacing: var(--pf-tracking-tight);
+}
+
+.pf-footer-descriptor {
+  margin: 0;
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  color: var(--pf-text-secondary);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-wide);
+}
+
+/* --- Utility Navigation --- */
+.pf-footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+}
+
+.pf-footer-nav-heading,
+.pf-footer-gateway-heading {
+  text-transform: uppercase;
+  letter-spacing: var(--pf-tracking-widest);
+  color: var(--pf-text-muted);
+}
+
+.pf-footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-footer-nav-item {
+  display: flex;
+}
+
+.pf-footer-nav-link {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+  padding-block: 0.125rem;
+}
+
+.pf-footer-nav-link:hover {
+  color: var(--pf-accent-primary);
+}
+
+.pf-footer-nav-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+/* --- External Gateway Section --- */
+.pf-footer-gateway {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+}
+
+.pf-footer-gateway-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-footer-gateway-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-3xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-text-muted);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+  white-space: nowrap;
+  padding-block: 0.125rem;
+}
+
+.pf-footer-gateway-link:hover {
+  color: var(--pf-accent-primary);
+}
+
+.pf-footer-gateway-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+  border-radius: var(--pf-radius-xs);
+}
+
+.pf-footer-external-icon {
+  font-size: 0.75em;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+/* --- Footer Divider & Meta Bar --- */
+.pf-footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--pf-border-subtle);
+}
+
+.pf-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-md);
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustment for narrow screens */
+@media (max-width: 640px) {
+  .pf-footer-grid {
+    flex-direction: column;
+    gap: var(--pf-space-lg);
+  }
+
+  .pf-footer-nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--pf-space-xs) var(--pf-space-md);
+  }
+
+  .pf-footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--pf-space-3xs);
+  }
 }
 
 /* Content Container Primitive with Fluid Gutters & Safe Max-Widths */
@@ -318,12 +982,6 @@ textarea {
   max-width: var(--pf-width-readable);
 }
 
-.pf-prose {
-  max-width: var(--pf-width-prose);
-  line-height: var(--pf-leading-relaxed);
-  font-size: var(--pf-font-size-base);
-}
-
 /* Responsive Section Spacing */
 .pf-section {
   padding-block: var(--pf-section-space);
@@ -359,11 +1017,27 @@ textarea {
   --pf-grid-min: 380px;
 }
 
+.pf-grid-2col {
+  gap: var(--pf-space-lg);
+  --pf-grid-min: min(100%, 460px);
+}
+
+.pf-grid-3col {
+  gap: var(--pf-space-md);
+  --pf-grid-min: min(100%, 320px);
+}
+
+.pf-grid-4col {
+  gap: var(--pf-space-md);
+  --pf-grid-min: min(100%, 240px);
+}
+
 /* Responsive Stack Primitive */
 .pf-stack {
   display: flex;
   flex-direction: column;
   gap: var(--pf-space-md);
+  width: 100%;
 }
 
 .pf-stack-xs {
@@ -382,12 +1056,20 @@ textarea {
   gap: var(--pf-space-xl);
 }
 
+.pf-stack-2xl {
+  gap: var(--pf-space-2xl);
+}
+
 /* Responsive Flex Row Primitive */
 .pf-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--pf-space-md);
+}
+
+.pf-row-nowrap {
+  flex-wrap: nowrap;
 }
 
 .pf-row-between {
@@ -398,60 +1080,491 @@ textarea {
   gap: var(--pf-space-md);
 }
 
-/* Surface & Panel Primitives */
+.pf-row-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pf-space-md);
+}
+
+.pf-row-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--pf-space-md);
+}
+
+.pf-row-align-start {
+  align-items: flex-start;
+}
+
+.pf-row-xs {
+  gap: var(--pf-space-xs);
+}
+
+.pf-row-sm {
+  gap: var(--pf-space-sm);
+}
+
+.pf-row-lg {
+  gap: var(--pf-space-lg);
+}
+
+/* ==========================================================================
+   4. Core UI Primitives
+   ========================================================================== */
+
+/* --- 4.1 Surfaces --- */
+
+/* Base Surface (Card, panel, container background) */
 .pf-surface {
   background-color: var(--pf-surface-1);
   border: 1px solid var(--pf-border-default);
   border-radius: var(--pf-radius-lg);
   padding: var(--pf-space-md);
-  box-shadow: var(--pf-shadow-sm);
+  box-shadow: var(--pf-shadow-xs);
 }
 
-.pf-surface-subtle {
-  background-color: var(--pf-surface-2);
-  border-color: var(--pf-border-subtle);
-}
-
+/* Elevated Surface (Modals, flyouts, floating priority modules) */
 .pf-surface-elevated {
   background-color: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-lg);
   box-shadow: var(--pf-shadow-md);
 }
 
+/* Bordered Surface (Structured architectural sections with prominent boundary) */
+.pf-surface-bordered {
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-strong);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-md);
+}
+
+/* Subtle / Secondary Surface (Wells, inactive groupings, nested panels) */
+.pf-surface-subtle {
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-subtle);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-md);
+}
+
+/* Inset Surface (Telemetry displays, data wells, technical readouts) */
+.pf-surface-inset {
+  background-color: var(--pf-surface-3);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  padding: var(--pf-space-sm);
+  box-shadow: inset 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Restrained Glass Surface (Aviation canopy / terminal overlay) */
 .pf-surface-glass {
   background-color: var(--pf-surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-color: var(--pf-border-glass);
+  border: 1px solid var(--pf-border-glass);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-md);
 }
 
-/* Card Primitive */
+/* --- 4.2 Cards --- */
+
+/* Reusable Content Card Primitive */
 .pf-card {
   display: flex;
   flex-direction: column;
   background-color: var(--pf-surface-1);
   border: 1px solid var(--pf-border-default);
   border-radius: var(--pf-radius-lg);
-  padding: var(--pf-space-lg);
-  box-shadow: var(--pf-shadow-sm);
+  box-shadow: var(--pf-shadow-xs);
   transition:
-    border-color var(--pf-transition-base),
-    box-shadow var(--pf-transition-base),
-    transform var(--pf-transition-base);
+    border-color var(--pf-transition-fast),
+    box-shadow var(--pf-transition-fast),
+    transform var(--pf-transition-fast);
   overflow: hidden;
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
+/* Interactive Card State (Clickable modules, selectable aircraft/city profiles) */
 .pf-card-interactive {
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .pf-card-interactive:hover {
   border-color: var(--pf-border-strong);
   box-shadow: var(--pf-shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
-/* Accessible Visually Hidden Primitive */
+.pf-card-interactive:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+.pf-card-interactive:active {
+  transform: translateY(0);
+  box-shadow: var(--pf-shadow-xs);
+}
+
+/* Card Section Slots */
+.pf-card-header {
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  border-block-end: 1px solid var(--pf-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  flex-wrap: wrap;
+}
+
+.pf-card-body {
+  padding: var(--pf-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  flex: 1 1 auto;
+}
+
+.pf-card-footer {
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  border-block-start: 1px solid var(--pf-border-subtle);
+  background-color: var(--pf-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  flex-wrap: wrap;
+}
+
+/* --- 4.3 Action Primitives (Buttons & Links) --- */
+
+/* Base Button Primitive (Touch-friendly, accessible) */
+.pf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pf-space-xs);
+  min-height: var(--pf-control-height-md);
+  padding-inline: var(--pf-space-md);
+  padding-block: var(--pf-space-2xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-label);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-none);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--pf-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--pf-text-primary);
+  transition:
+    background-color var(--pf-transition-fast),
+    border-color var(--pf-transition-fast),
+    color var(--pf-transition-fast),
+    box-shadow var(--pf-transition-fast),
+    opacity var(--pf-transition-fast);
+}
+
+.pf-button:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+.pf-button:disabled,
+.pf-button[aria-disabled="true"] {
+  opacity: var(--pf-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary Action Button (Main destination, departure, confirmation) */
+.pf-button-primary {
+  background-color: var(--pf-accent-primary);
+  color: var(--pf-accent-fg);
+  border-color: transparent;
+}
+
+.pf-button-primary:hover {
+  background-color: var(--pf-accent-hover);
+}
+
+.pf-button-primary:active {
+  background-color: var(--pf-accent-active);
+}
+
+/* Secondary Action Button (Standard interactive control, filter, secondary flow) */
+.pf-button-secondary {
+  background-color: var(--pf-surface-1);
+  color: var(--pf-text-primary);
+  border-color: var(--pf-border-default);
+}
+
+.pf-button-secondary:hover {
+  background-color: var(--pf-surface-2);
+  border-color: var(--pf-border-strong);
+}
+
+.pf-button-secondary:active {
+  background-color: var(--pf-surface-3);
+}
+
+/* Tertiary / Quiet Action Button (Ghost button, dismiss, subtle action) */
+.pf-button-tertiary,
+.pf-button-quiet {
+  background-color: transparent;
+  color: var(--pf-text-secondary);
+  border-color: transparent;
+}
+
+.pf-button-tertiary:hover,
+.pf-button-quiet:hover {
+  background-color: var(--pf-surface-2);
+  color: var(--pf-text-primary);
+}
+
+.pf-button-tertiary:active,
+.pf-button-quiet:active {
+  background-color: var(--pf-surface-3);
+}
+
+/* Button with Link Appearance */
+.pf-button-link {
+  background-color: transparent;
+  color: var(--pf-accent-primary);
+  border-color: transparent;
+  padding: 0;
+  min-height: auto;
+  font-weight: inherit;
+}
+
+.pf-button-link:hover {
+  text-decoration: underline;
+  color: var(--pf-accent-hover);
+}
+
+/* Standalone Content Link */
+.pf-link {
+  color: var(--pf-accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: inherit;
+  transition: color var(--pf-transition-fast);
+}
+
+.pf-link:hover {
+  color: var(--pf-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+.pf-link:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* Button Sizing Modifiers */
+.pf-button-sm {
+  min-height: var(--pf-control-height-sm);
+  padding-inline: var(--pf-space-sm);
+  font-size: var(--pf-font-size-xs);
+}
+
+.pf-button-lg {
+  min-height: var(--pf-control-height-lg);
+  padding-inline: var(--pf-space-lg);
+  font-size: var(--pf-font-size-base);
+}
+
+/* --- 4.4 Badges & Status Indicators --- */
+
+/* Reusable Status Badge Primitive */
+.pf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+  padding: var(--pf-space-4xs) var(--pf-space-xs);
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-none);
+  letter-spacing: var(--pf-tracking-wide);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  border-radius: var(--pf-radius-sm);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* Neutral Status (Default operational information) */
+.pf-badge-neutral {
+  background-color: var(--pf-status-neutral-bg);
+  color: var(--pf-status-neutral);
+  border-color: var(--pf-status-neutral-border);
+}
+
+/* Informational Status (Telemetry, scheduled, advisory) */
+.pf-badge-info {
+  background-color: var(--pf-status-info-bg);
+  color: var(--pf-status-info);
+  border-color: var(--pf-status-info-border);
+}
+
+/* Success Status (On time, clear, active, operational) */
+.pf-badge-success {
+  background-color: var(--pf-status-success-bg);
+  color: var(--pf-status-success);
+  border-color: var(--pf-status-success-border);
+}
+
+/* Warning Status (Standby, delayed, atmospheric advisory) */
+.pf-badge-warning {
+  background-color: var(--pf-status-warning-bg);
+  color: var(--pf-status-warning);
+  border-color: var(--pf-status-warning-border);
+}
+
+/* Danger Status (Alert, cancelled, runway closed) */
+.pf-badge-danger {
+  background-color: var(--pf-status-danger-bg);
+  color: var(--pf-status-danger);
+  border-color: var(--pf-status-danger-border);
+}
+
+/* Status Indicator Dot (Color signal companion) */
+.pf-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--pf-radius-full);
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+}
+
+/* Compact Operational Monospace Pill */
+.pf-operational-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+  padding: var(--pf-space-4xs) var(--pf-space-2xs);
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-none);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  border-radius: var(--pf-radius-sm);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-default);
+  color: var(--pf-text-primary);
+}
+
+/* --- 4.5 Dividers --- */
+
+/* Horizontal Divider Primitive */
+.pf-divider {
+  border: none;
+  border-block-start: 1px solid var(--pf-border-default);
+  margin: 0;
+  width: 100%;
+}
+
+.pf-divider-subtle {
+  border: none;
+  border-block-start: 1px solid var(--pf-border-subtle);
+  margin: 0;
+  width: 100%;
+}
+
+.pf-divider-strong {
+  border: none;
+  border-block-start: 1px solid var(--pf-border-strong);
+  margin: 0;
+  width: 100%;
+}
+
+/* Vertical Inline Divider (Separating flight codes, tags, metadata) */
+.pf-divider-vertical {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  align-self: center;
+  background-color: var(--pf-border-default);
+  margin-inline: var(--pf-space-xs);
+  border: none;
+  flex-shrink: 0;
+}
+
+/* --- 4.6 Structured Data Row Primitives --- */
+
+/* Container for Structured Key-Value Rows */
+.pf-data-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pf-data-list > .pf-data-row:not(:last-child) {
+  border-block-end: 1px solid var(--pf-border-subtle);
+}
+
+/* Individual Data Row (Responsive key-value item with 320px wrapping protection) */
+.pf-data-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  padding-block: var(--pf-space-sm);
+  flex-wrap: wrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.pf-data-label {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-text-muted);
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.pf-data-value {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-semibold);
+  color: var(--pf-text-primary);
+  text-align: end;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Tabular Monospace Variant for Telemetry / Gate / Runway Data */
+.pf-data-value-mono {
+  font-family: var(--pf-font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--pf-tracking-wide);
+}
+
+/* Secondary Meta Annotation below/alongside Value */
+.pf-data-meta {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  font-weight: var(--pf-font-weight-regular);
+  color: var(--pf-text-muted);
+  display: block;
+}
+
+/* --- 4.7 Accessible Visually Hidden Primitive --- */
+
 .pf-visually-hidden,
 .sr-only {
   position: absolute !important;
