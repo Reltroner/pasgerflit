@@ -2,8 +2,8 @@
 @import "../styles/globals.css";
 
 :root {
-  --background: var(--pf-surface-page, #f8fafc);
-  --foreground: var(--pf-text-primary, #0f172a);
+  --background: var(--pf-surface-page, #f6f8fa);
+  --foreground: var(--pf-text-primary, #0e131d);
 }
 
 @theme inline {
@@ -15,8 +15,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--pf-surface-page, #090d14);
-    --foreground: var(--pf-text-primary, #f1f5f9);
+    --background: var(--pf-surface-page, #080b11);
+    --foreground: var(--pf-text-primary, #edf1f5);
   }
 }
 
