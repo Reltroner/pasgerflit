@@ -1,0 +1,8 @@
+/**
+ * Pasgerflit Global Styles Aggregator
+ *
+ * Assembles architectural tokens and presentation foundation stylesheets.
+ */
+
+@import "./tokens.css";
+@import "./pasgerflit.css";

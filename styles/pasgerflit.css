@@ -1,0 +1,466 @@
+/**
+ * Pasgerflit Design System — Presentation & Responsive Foundation
+ *
+ * Designed for viewport range: 320px through ultrawide displays.
+ * Aesthetic alignment: Aviation, modern civilization, airport architecture,
+ * evening sky, and technological clarity.
+ */
+
+/* ==========================================================================
+   1. Design Tokens & Semantic Custom Properties
+   ========================================================================== */
+
+:root {
+  /* Surface / Background Colors (Light Mode) */
+  --pf-surface-page: #f8fafc;
+  --pf-surface-1: #ffffff;
+  --pf-surface-2: #f1f5f9;
+  --pf-surface-3: #e2e8f0;
+  --pf-surface-elevated: #ffffff;
+  --pf-surface-glass: rgba(255, 255, 255, 0.82);
+  --pf-surface-overlay: rgba(15, 23, 42, 0.45);
+
+  /* Foreground & Typography Colors */
+  --pf-text-primary: #0f172a;
+  --pf-text-secondary: #334155;
+  --pf-text-muted: #64748b;
+  --pf-text-faint: #94a3b8;
+  --pf-text-inverse: #f8fafc;
+
+  /* Borders & Dividers */
+  --pf-border-subtle: #f1f5f9;
+  --pf-border-default: #e2e8f0;
+  --pf-border-strong: #cbd5e1;
+  --pf-border-glass: rgba(255, 255, 255, 0.6);
+
+  /* Accents (Aviation Sky Azure & Evening Horizon Amber) */
+  --pf-accent-primary: #0284c7;
+  --pf-accent-hover: #0369a1;
+  --pf-accent-active: #075985;
+  --pf-accent-subtle: #e0f2fe;
+  --pf-accent-fg: #ffffff;
+  --pf-accent-secondary: #d97706;
+
+  /* Focus States */
+  --pf-focus-ring-color: var(--pf-accent-primary);
+  --pf-focus-ring-width: 2px;
+  --pf-focus-ring-offset: 2px;
+
+  /* Fluid Spacing Scale (320px -> 1440px) */
+  --pf-space-3xs: clamp(0.125rem, 0.1rem + 0.125vw, 0.25rem);
+  --pf-space-2xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --pf-space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --pf-space-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1rem);
+  --pf-space-md: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  --pf-space-lg: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  --pf-space-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --pf-space-2xl: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+  --pf-space-3xl: clamp(3.5rem, 2.75rem + 3.75vw, 6rem);
+
+  /* Border Radii */
+  --pf-radius-xs: 0.125rem;
+  --pf-radius-sm: 0.25rem;
+  --pf-radius-md: 0.5rem;
+  --pf-radius-lg: 0.75rem;
+  --pf-radius-xl: 1rem;
+  --pf-radius-2xl: 1.5rem;
+  --pf-radius-full: 9999px;
+
+  /* Elevation & Shadows */
+  --pf-shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --pf-shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.07), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+  --pf-shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.03);
+  --pf-shadow-xl: 0 20px 25px -5px rgb(15 23 42 / 0.1), 0 8px 10px -6px rgb(15 23 42 / 0.04);
+
+  /* Fluid Typography Scale (320px -> 1440px) */
+  --pf-font-size-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --pf-font-size-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --pf-font-size-base: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
+  --pf-font-size-lg: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  --pf-font-size-xl: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+  --pf-font-size-2xl: clamp(1.5rem, 1.35rem + 0.9vw, 1.875rem);
+  --pf-font-size-3xl: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+  --pf-font-size-4xl: clamp(2.25rem, 1.85rem + 2.2vw, 3.25rem);
+  --pf-font-size-5xl: clamp(2.75rem, 2.1rem + 3.2vw, 4.25rem);
+
+  /* Line Heights & Letter Spacing */
+  --pf-leading-none: 1;
+  --pf-leading-tight: 1.2;
+  --pf-leading-snug: 1.35;
+  --pf-leading-normal: 1.5;
+  --pf-leading-relaxed: 1.65;
+  --pf-tracking-tight: -0.02em;
+  --pf-tracking-normal: 0em;
+  --pf-tracking-wide: 0.04em;
+  --pf-tracking-wider: 0.08em;
+
+  /* Layout Boundaries & Gutters */
+  --pf-width-readable: 68ch;
+  --pf-width-prose: 75ch;
+  --pf-container-sm: 640px;
+  --pf-container-md: 768px;
+  --pf-container-lg: 1024px;
+  --pf-container-xl: 1280px;
+  --pf-container-2xl: 1440px;
+  --pf-container-wide: 1720px;
+  --pf-gutter: clamp(1rem, 0.75rem + 1.5vw, 2.5rem);
+  --pf-section-space: clamp(2.5rem, 1.8rem + 3vw, 5.5rem);
+
+  /* Transition Durations */
+  --pf-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --pf-transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --pf-transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   2. Dark Mode Tokens (System & Explicit)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pf-surface-page: #090d14;
+    --pf-surface-1: #0f1726;
+    --pf-surface-2: #162032;
+    --pf-surface-3: #1e2c44;
+    --pf-surface-elevated: #162032;
+    --pf-surface-glass: rgba(15, 23, 38, 0.82);
+    --pf-surface-overlay: rgba(3, 7, 18, 0.75);
+
+    --pf-text-primary: #f1f5f9;
+    --pf-text-secondary: #cbd5e1;
+    --pf-text-muted: #8493a8;
+    --pf-text-faint: #475569;
+    --pf-text-inverse: #090d14;
+
+    --pf-border-subtle: #162032;
+    --pf-border-default: #223048;
+    --pf-border-strong: #334464;
+    --pf-border-glass: rgba(255, 255, 255, 0.08);
+
+    --pf-accent-primary: #38bdf8;
+    --pf-accent-hover: #7dd3fc;
+    --pf-accent-active: #bae6fd;
+    --pf-accent-subtle: rgba(56, 189, 248, 0.12);
+    --pf-accent-fg: #082f49;
+    --pf-accent-secondary: #fbbf24;
+
+    --pf-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  }
+}
+
+[data-theme="dark"] {
+  --pf-surface-page: #090d14;
+  --pf-surface-1: #0f1726;
+  --pf-surface-2: #162032;
+  --pf-surface-3: #1e2c44;
+  --pf-surface-elevated: #162032;
+  --pf-surface-glass: rgba(15, 23, 38, 0.82);
+  --pf-surface-overlay: rgba(3, 7, 18, 0.75);
+
+  --pf-text-primary: #f1f5f9;
+  --pf-text-secondary: #cbd5e1;
+  --pf-text-muted: #8493a8;
+  --pf-text-faint: #475569;
+  --pf-text-inverse: #090d14;
+
+  --pf-border-subtle: #162032;
+  --pf-border-default: #223048;
+  --pf-border-strong: #334464;
+  --pf-border-glass: rgba(255, 255, 255, 0.08);
+
+  --pf-accent-primary: #38bdf8;
+  --pf-accent-hover: #7dd3fc;
+  --pf-accent-active: #bae6fd;
+  --pf-accent-subtle: rgba(56, 189, 248, 0.12);
+  --pf-accent-fg: #082f49;
+  --pf-accent-secondary: #fbbf24;
+
+  --pf-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --pf-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --pf-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --pf-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.7), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+/* ==========================================================================
+   3. Universal Box Sizing, Accessibility & Media Resets
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-primary);
+  background-color: var(--pf-surface-page);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text Wrapping & Overflow Resilience (crucial for narrow 320px screens) */
+p, h1, h2, h3, h4, h5, h6, li, dt, dd {
+  overflow-wrap: break-word;
+}
+
+/* Media Constrained Intrinsic Sizing */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessible Interactive Normalization */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Focus-Visible Outline */
+:focus-visible {
+  outline: var(--pf-focus-ring-width) solid var(--pf-focus-ring-color);
+  outline-offset: var(--pf-focus-ring-offset);
+}
+
+/* Content Selection Styling */
+::selection {
+  background-color: var(--pf-accent-subtle);
+  color: var(--pf-text-primary);
+}
+
+/* Motion Sensitivity Handling */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   4. Reusable Layout Primitives
+   ========================================================================== */
+
+/* Page Shell Primitive */
+.pf-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--pf-surface-page);
+  color: var(--pf-text-primary);
+}
+
+/* Content Container Primitive with Fluid Gutters & Safe Max-Widths */
+.pf-container {
+  width: 100%;
+  max-width: var(--pf-container-2xl);
+  margin-inline: auto;
+  padding-inline: var(--pf-gutter);
+}
+
+.pf-container-sm {
+  max-width: var(--pf-container-sm);
+}
+
+.pf-container-md {
+  max-width: var(--pf-container-md);
+}
+
+.pf-container-lg {
+  max-width: var(--pf-container-lg);
+}
+
+.pf-container-xl {
+  max-width: var(--pf-container-xl);
+}
+
+.pf-container-wide {
+  max-width: var(--pf-container-wide);
+}
+
+.pf-container-fluid {
+  max-width: 100%;
+}
+
+/* Readable Line-Length Limiter (stops excessive length on large screens) */
+.pf-readable {
+  max-width: var(--pf-width-readable);
+}
+
+.pf-prose {
+  max-width: var(--pf-width-prose);
+  line-height: var(--pf-leading-relaxed);
+  font-size: var(--pf-font-size-base);
+}
+
+/* Responsive Section Spacing */
+.pf-section {
+  padding-block: var(--pf-section-space);
+}
+
+.pf-section-sm {
+  padding-block: calc(var(--pf-section-space) * 0.5);
+}
+
+.pf-section-lg {
+  padding-block: calc(var(--pf-section-space) * 1.5);
+}
+
+/* Responsive Auto-Fitting Grid (collapses naturally at 320px, no overflow) */
+.pf-grid {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--pf-grid-min, 280px)), 1fr));
+}
+
+.pf-grid-dense {
+  gap: var(--pf-space-sm);
+  --pf-grid-min: 220px;
+}
+
+.pf-grid-cards {
+  gap: var(--pf-space-lg);
+  --pf-grid-min: 300px;
+}
+
+.pf-grid-wide {
+  gap: var(--pf-space-lg);
+  --pf-grid-min: 380px;
+}
+
+/* Responsive Stack Primitive */
+.pf-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-md);
+}
+
+.pf-stack-xs {
+  gap: var(--pf-space-xs);
+}
+
+.pf-stack-sm {
+  gap: var(--pf-space-sm);
+}
+
+.pf-stack-lg {
+  gap: var(--pf-space-lg);
+}
+
+.pf-stack-xl {
+  gap: var(--pf-space-xl);
+}
+
+/* Responsive Flex Row Primitive */
+.pf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-md);
+}
+
+.pf-row-between {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-md);
+}
+
+/* Surface & Panel Primitives */
+.pf-surface {
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-md);
+  box-shadow: var(--pf-shadow-sm);
+}
+
+.pf-surface-subtle {
+  background-color: var(--pf-surface-2);
+  border-color: var(--pf-border-subtle);
+}
+
+.pf-surface-elevated {
+  background-color: var(--pf-surface-elevated);
+  box-shadow: var(--pf-shadow-md);
+}
+
+.pf-surface-glass {
+  background-color: var(--pf-surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--pf-border-glass);
+}
+
+/* Card Primitive */
+.pf-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  padding: var(--pf-space-lg);
+  box-shadow: var(--pf-shadow-sm);
+  transition:
+    border-color var(--pf-transition-base),
+    box-shadow var(--pf-transition-base),
+    transform var(--pf-transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.pf-card-interactive {
+  cursor: pointer;
+}
+
+.pf-card-interactive:hover {
+  border-color: var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Accessible Visually Hidden Primitive */
+.pf-visually-hidden,
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
