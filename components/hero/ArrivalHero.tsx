@@ -26,6 +26,7 @@ export interface ArrivalHeroProps {
 export function ArrivalHero({ className, children }: ArrivalHeroProps) {
   return (
     <section
+      id="arrival"
       className={`pf-hero-arrival pf-experience-stage ${className || ""}`.trim()}
       data-experience="arrival"
       aria-labelledby="arrival-hero-title"

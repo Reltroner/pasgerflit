@@ -1,14 +1,10 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import {
-  ROUTES,
-  PRIMARY_NAV_ITEMS,
-} from "@/lib/navigation";
 import { ArrivalHero } from "@/components/hero";
 import { CivilizationExperience } from "@/components/civilization";
 import { MobilityExperience } from "@/components/aviation";
 import { LivingExperience } from "@/components/city";
 import { PAIAExperience } from "@/components/airport";
+import { DiscoveryExperience } from "./DiscoveryExperience";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -95,61 +91,9 @@ export function HomepageExperience({
           Stage 6: Discovery / Return Experience
           Purpose: Give the visitor a natural continuation into the rest of
                    the website.
+                   Realized via DiscoveryExperience.
           ==================================================================== */}
-      {discoverySlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-discovery"
-          data-experience="discovery"
-          aria-labelledby="pf-exp-discovery-title"
-        >
-          <div className="pf-container">
-            <div className="pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-neutral">ARCHIVES & CARTOGRAPHY</span>
-                  <span className="pf-text-operational">CONTINUATION</span>
-                </div>
-                <h2 id="pf-exp-discovery-title" className="pf-text-section-heading">
-                  Continue Across Pasgerflit
-                </h2>
-                <p className="pf-text-lead">
-                  The arrival is just the beginning. Traverse the deeper archives, cartographic charts, soundscapes, and industrial networks of the Sky Nation.
-                </p>
-              </div>
-
-              <div className="pf-grid pf-grid-3col">
-                {PRIMARY_NAV_ITEMS.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="pf-card pf-card-interactive"
-                  >
-                    <div className="pf-card-body pf-stack pf-stack-xs">
-                      <span className="pf-text-operational">{item.group}</span>
-                      <h3 className="pf-text-subsection-heading">{item.label}</h3>
-                      <p className="pf-text-body pf-text-secondary">
-                        {item.description}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              <div className="pf-surface pf-surface-subtle pf-row-between">
-                <div className="pf-stack pf-stack-3xs">
-                  <span className="pf-text-label">Cartographic & Transit Archives</span>
-                  <span className="pf-text-caption">
-                    Access the interactive navigation registry, flight routes, and station telemetry.
-                  </span>
-                </div>
-                <Link href={ROUTES.EXPLORE} className="pf-button pf-button-primary">
-                  Launch Explore Hub
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {discoverySlot ?? <DiscoveryExperience />}
     </div>
   );
 }

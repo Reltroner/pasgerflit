@@ -3626,3 +3626,399 @@ textarea {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   7. Phase 2 Component Experiences — 5.6 Discovery / Return Experience
+   ========================================================================== */
+
+.pf-discovery-experience {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--pf-surface-page);
+  padding-block: clamp(3.5rem, 2.5rem + 5vw, 7.5rem);
+}
+
+.pf-discovery-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Calm open sky atmospheric glow */
+.pf-discovery-sky-glow {
+  position: absolute;
+  left: 50%;
+  bottom: -15%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 50vw;
+  max-width: 1000px;
+  max-height: 600px;
+  background: radial-gradient(ellipse at 50% 100%, var(--pf-accent-subtle) 0%, transparent 70%);
+  opacity: 0.55;
+}
+
+/* Soft horizon line demarcating infinite routes */
+.pf-discovery-horizon-line {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--pf-border-subtle) 20%, var(--pf-border-default) 50%, var(--pf-border-subtle) 80%, transparent 100%);
+  opacity: 0.4;
+}
+
+/* Subtle route rays converging to the horizon */
+.pf-discovery-route-rays {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% 100%, var(--pf-accent-secondary-subtle) 0%, transparent 60%),
+    linear-gradient(to right, var(--pf-border-subtle) 1px, transparent 1px);
+  background-size: 100% 100%, clamp(5rem, 3.5rem + 3vw, 8rem) 100%;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 80%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 80%, black 20%, transparent 80%);
+}
+
+.pf-discovery-container {
+  position: relative;
+  z-index: 1;
+}
+
+.pf-discovery-content {
+  max-width: var(--pf-container-xl);
+  margin-inline: auto;
+}
+
+/* 1. Header & Creed Bar */
+.pf-discovery-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-discovery-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2.25rem, 1.75rem + 2.75vw, 3.5rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  color: var(--pf-text-primary);
+  letter-spacing: var(--pf-tracking-tight);
+  margin: 0;
+}
+
+.pf-discovery-lead {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-discovery-creed-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding: var(--pf-space-sm) var(--pf-space-md);
+  background-color: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-subtle);
+  border-inline-start: 3px solid var(--pf-accent-primary);
+  border-radius: var(--pf-radius-sm);
+  margin-top: var(--pf-space-xs);
+}
+
+.pf-discovery-creed-text {
+  font-family: var(--pf-font-serif, var(--pf-font-sans));
+  font-size: var(--pf-font-size-base);
+  font-style: italic;
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+/* Section Header */
+.pf-discovery-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-discovery-section-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-discovery-section-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 2. Pathways Grid (6 Dimensions) */
+.pf-discovery-pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--pf-space-md);
+}
+
+.pf-discovery-pathway-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  padding: var(--pf-space-lg);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--pf-transition-fast), border-color var(--pf-transition-fast), box-shadow var(--pf-transition-fast);
+}
+
+.pf-discovery-pathway-card:hover {
+  border-color: var(--pf-accent-border);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+.pf-discovery-pathway-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-discovery-pathway-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-discovery-pathway-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.pf-discovery-pathway-insight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  background: var(--pf-surface-subtle);
+  border-radius: var(--pf-radius-xs);
+  border-inline-start: 2px solid var(--pf-border-strong);
+}
+
+.pf-discovery-pathway-insight p {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+.pf-discovery-pathway-action {
+  margin-top: var(--pf-space-2xs);
+}
+
+.pf-discovery-pathway-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-accent-primary);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast), gap var(--pf-transition-fast);
+}
+
+.pf-discovery-pathway-link:hover {
+  color: var(--pf-accent-hover);
+  gap: var(--pf-space-xs);
+}
+
+.pf-discovery-arrow {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+}
+
+.pf-discovery-pathway-link:hover .pf-discovery-arrow {
+  transform: translateX(3px);
+}
+
+/* 3. Culmination & Return to Arrival */
+.pf-discovery-culmination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pf-space-lg);
+  padding: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  background: linear-gradient(135deg, var(--pf-surface-elevated) 0%, var(--pf-surface-page) 100%);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-sm);
+}
+
+.pf-discovery-culmination-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-discovery-culmination-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-discovery-culmination-text {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-discovery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-sm);
+  flex-shrink: 0;
+}
+
+.pf-discovery-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-discovery-cta-primary:hover .pf-discovery-arrow {
+  transform: translateX(3px);
+}
+
+.pf-discovery-cta-return {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-discovery-return-icon {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+}
+
+.pf-discovery-cta-return:hover .pf-discovery-return-icon {
+  transform: translateY(-2px);
+}
+
+/* 4. Portal Bar (Reltroner Studio Exit) */
+.pf-discovery-portal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pf-space-sm);
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  background: var(--pf-surface-subtle);
+  border: 1px solid var(--pf-border-subtle);
+  border-radius: var(--pf-radius-sm);
+}
+
+.pf-discovery-portal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+}
+
+.pf-discovery-portal-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  color: var(--pf-text-muted);
+  line-height: var(--pf-leading-normal);
+}
+
+.pf-discovery-portal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-3xs);
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  font-weight: var(--pf-font-weight-medium);
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  padding: var(--pf-space-2xs) var(--pf-space-sm);
+  border: 1px solid var(--pf-border-subtle);
+  border-radius: var(--pf-radius-xs);
+  transition: color var(--pf-transition-fast), border-color var(--pf-transition-fast), background-color var(--pf-transition-fast);
+}
+
+.pf-discovery-portal-link:hover {
+  color: var(--pf-text-primary);
+  border-color: var(--pf-border-default);
+  background-color: var(--pf-surface-elevated);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .pf-discovery-pathway-card:hover {
+    transform: none;
+  }
+  .pf-discovery-pathway-link:hover .pf-discovery-arrow,
+  .pf-discovery-cta-primary:hover .pf-discovery-arrow,
+  .pf-discovery-cta-return:hover .pf-discovery-return-icon {
+    transform: none;
+  }
+}
+
+/* Responsive Narrow Breakpoint (320px - 640px) */
+@media (max-width: 640px) {
+  .pf-discovery-culmination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--pf-space-md);
+  }
+
+  .pf-discovery-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .pf-discovery-actions > .pf-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pf-discovery-portal-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--pf-space-xs);
+  }
+}
