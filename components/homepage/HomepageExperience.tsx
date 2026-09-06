@@ -7,6 +7,7 @@ import {
 import { ArrivalHero } from "@/components/hero";
 import { CivilizationExperience } from "@/components/civilization";
 import { MobilityExperience } from "@/components/aviation";
+import { LivingExperience } from "@/components/city";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -72,68 +73,14 @@ export function HomepageExperience({
           ==================================================================== */}
       {mobilitySlot ?? <MobilityExperience />}
 
-
       {/* ====================================================================
           Stage 4: Living Experience
           Purpose: Connect mobility with cities, civic life, culture and
                    hospitality.
+                   Realized via LivingExperience.
           ==================================================================== */}
-      {livingSlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-living"
-          data-experience="living"
-          aria-labelledby="pf-exp-living-title"
-        >
-          <div className="pf-container">
-            <div className="pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-neutral">CIVIC CULTURE</span>
-                  <span className="pf-text-operational">HOSPITALITY & CITIES</span>
-                </div>
-                <h2 id="pf-exp-living-title" className="pf-text-section-heading">
-                  Living in the Sky Nation: Cities, Culture & Hospitality
-                </h2>
-                <p className="pf-text-lead">
-                  Where technological infrastructure meets human warmth. Life in Pasgerflit weaves airport-city urbanism with refined transit rituals.
-                </p>
-              </div>
+      {livingSlot ?? <LivingExperience />}
 
-              <div className="pf-grid pf-grid-2col">
-                <div className="pf-card">
-                  <div className="pf-card-body pf-stack pf-stack-xs">
-                    <span className="pf-text-operational">METROPOLITAN LIFE</span>
-                    <h3 className="pf-text-subsection-heading">Aviashenwelt & Airport-Cities</h3>
-                    <p className="pf-text-body pf-text-secondary">
-                      Cities like Aviashenwelt harmonize residential neighborhoods, green public parks, and vibrant commercial avenues directly around aeronautical hubs, creating lively urban environments.
-                    </p>
-                    <div className="pf-row pf-row-xs">
-                      <Link href={ROUTES.CITIES} className="pf-link pf-text-small">
-                        View Cities & Regions &rarr;
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pf-card">
-                  <div className="pf-card-body pf-stack pf-stack-xs">
-                    <span className="pf-text-operational">TRANSIT LIFESTYLE</span>
-                    <h3 className="pf-text-subsection-heading">SkyBrew & Concourse Hospitality</h3>
-                    <p className="pf-text-body pf-text-secondary">
-                      The sensory warmth of Pasgerflit lives in its concourses: aroma of freshly roasted SkyBrew coffee, panoramic apron windows, and peaceful acoustic environments where travellers rest and converse.
-                    </p>
-                    <div className="pf-row pf-row-xs">
-                      <Link href={ROUTES.CULTURE} className="pf-link pf-text-small">
-                        Discover Culture & Lifestyle &rarr;
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ====================================================================
           Stage 5: PAIA Experience

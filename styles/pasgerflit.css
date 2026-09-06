@@ -2565,5 +2565,488 @@ textarea {
   }
 }
 
+/* ==========================================================================
+   5. Phase 2 Component Experiences — 5.4 Living Experience
+   ========================================================================== */
+
+.pf-living-experience {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--pf-surface-page);
+  border-block-end: 1px solid var(--pf-border-default);
+  padding-block: clamp(3rem, 2.2rem + 4vw, 6.5rem);
+}
+
+.pf-living-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Atmospheric warm civic glow */
+.pf-living-civic-glow {
+  position: absolute;
+  left: -5%;
+  top: 30%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  background: radial-gradient(circle, var(--pf-accent-secondary-subtle) 0%, transparent 70%);
+  opacity: 0.55;
+}
+
+/* Soft runway-style centerline guidance marks */
+.pf-living-runway-guides {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 10%, var(--pf-accent-subtle) 0%, transparent 60%),
+    linear-gradient(to right, var(--pf-border-subtle) 1px, transparent 1px);
+  background-size: 100% 100%, clamp(5rem, 3.5rem + 3vw, 8rem) 100%;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 80%);
+}
+
+.pf-living-container {
+  position: relative;
+  z-index: 1;
+}
+
+.pf-living-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xl);
+  max-width: var(--pf-container-xl);
+  margin-inline: auto;
+}
+
+/* 1. Introduction Header */
+.pf-living-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-living-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lead);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* Common Sub-Section Headers */
+.pf-living-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-md);
+}
+
+.pf-living-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-living-section-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2.25rem);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-section-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 2. Canonical Districts Grid */
+.pf-living-districts-grid {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  width: 100%;
+}
+
+.pf-living-district-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  padding: var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-xl);
+  box-shadow: var(--pf-shadow-xs);
+  transition:
+    border-color var(--pf-transition-fast),
+    box-shadow var(--pf-transition-fast),
+    transform var(--pf-transition-fast);
+}
+
+.pf-living-district-card:hover {
+  border-color: var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+.pf-living-district-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-xs);
+  flex-wrap: wrap;
+  padding-block-end: var(--pf-space-3xs);
+  border-block-end: 1px solid var(--pf-border-subtle);
+}
+
+.pf-living-district-tag {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pf-accent-primary);
+}
+
+.pf-living-district-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xl);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-district-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.pf-living-district-feeling {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-4xs);
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-subtle);
+  border-radius: var(--pf-radius-md);
+  margin-block-start: var(--pf-space-xs);
+}
+
+.pf-living-feeling-label {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.pf-living-feeling-text {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  font-style: italic;
+}
+
+/* 3. Civic Life: Terminal Grammar in Public Space */
+.pf-living-civic-grid {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  width: 100%;
+}
+
+.pf-living-civic-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-xs);
+  transition: border-color var(--pf-transition-fast);
+}
+
+.pf-living-civic-card:hover {
+  border-color: var(--pf-border-strong);
+}
+
+.pf-living-civic-badge {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pf-accent-primary);
+}
+
+.pf-living-civic-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-civic-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 4. Culture: Lived Rituals */
+.pf-living-culture-grid {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  width: 100%;
+}
+
+.pf-living-culture-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-xs);
+  transition: border-color var(--pf-transition-fast);
+}
+
+.pf-living-culture-card:hover {
+  border-color: var(--pf-border-strong);
+}
+
+.pf-living-culture-pill {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pf-accent-secondary);
+}
+
+.pf-living-culture-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-culture-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 5. SkyBrew Hospitality Showcase */
+.pf-living-skybrew-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-lg);
+  padding: var(--pf-space-xl);
+  background: linear-gradient(135deg, var(--pf-surface-1) 0%, var(--pf-surface-2) 100%);
+  border: 1px solid var(--pf-border-strong);
+  border-inline-start: 4px solid var(--pf-accent-secondary);
+  border-radius: var(--pf-radius-2xl);
+  box-shadow: var(--pf-shadow-sm);
+}
+
+.pf-living-skybrew-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-living-skybrew-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-skybrew-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-living-skybrew-rhythms {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  width: 100%;
+}
+
+.pf-living-rhythm-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding: var(--pf-space-md);
+  background-color: var(--pf-surface-page);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+}
+
+.pf-living-rhythm-step {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pf-accent-secondary);
+}
+
+.pf-living-rhythm-name {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  font-weight: var(--pf-font-weight-semibold);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-rhythm-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 6. Human Moment & Actions */
+.pf-living-human-moment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-lg);
+  flex-wrap: wrap;
+  padding: var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-xl);
+  box-shadow: var(--pf-shadow-xs);
+}
+
+.pf-living-human-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-living-human-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-living-human-text {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-living-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-sm);
+  flex-shrink: 0;
+}
+
+.pf-living-cta-arrow {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+  margin-inline-start: var(--pf-space-3xs);
+}
+
+.pf-living-cta-primary:hover .pf-living-cta-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-living-district-card:hover {
+    transform: none;
+  }
+  .pf-living-cta-primary:hover .pf-living-cta-arrow {
+    transform: none;
+  }
+}
+
+/* Responsive Narrow Breakpoint (320px - 640px) */
+@media (max-width: 640px) {
+  .pf-living-skybrew-card {
+    padding: var(--pf-space-md);
+  }
+
+  .pf-living-human-moment {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--pf-space-md);
+  }
+
+  .pf-living-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .pf-living-actions > .pf-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
 
 
