@@ -1577,3 +1577,268 @@ textarea {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* ==========================================================================
+   5. Phase 2 Component Experiences — 5.1 Arrival Hero ("Enter Pasgerflit")
+   ========================================================================== */
+
+.pf-hero-arrival {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--pf-surface-1);
+  border-block-end: 1px solid var(--pf-border-default);
+  padding-block: clamp(2.5rem, 1.8rem + 3.5vw, 6rem);
+}
+
+.pf-hero-arrival-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Atmospheric sky & horizon gradient */
+.pf-hero-arrival-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, var(--pf-accent-subtle) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 45% at 80% 100%, var(--pf-accent-secondary-subtle) 0%, transparent 60%);
+  opacity: 0.85;
+}
+
+/* Perspective flight corridor / terminal mullion vectors */
+.pf-hero-arrival-vectors {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(to right, var(--pf-border-subtle) 1px, transparent 1px);
+  background-size: clamp(3.5rem, 2.5rem + 3vw, 7rem) 100%;
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, black 20%, transparent 80%);
+}
+
+/* Horizontal horizon reference guide */
+.pf-hero-arrival-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--pf-border-subtle) 20%,
+    var(--pf-border-strong) 50%,
+    var(--pf-border-subtle) 80%,
+    transparent 100%
+  );
+  opacity: 0.4;
+}
+
+.pf-hero-arrival-container {
+  position: relative;
+  z-index: 1;
+}
+
+.pf-hero-arrival-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-lg);
+  max-width: var(--pf-container-xl);
+  margin-inline: auto;
+}
+
+/* Operational Status Bar */
+.pf-hero-arrival-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-sm);
+  flex-wrap: wrap;
+  padding-block-end: var(--pf-space-sm);
+  border-block-end: 1px solid var(--pf-border-subtle);
+}
+
+.pf-hero-arrival-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pf-space-2xs);
+  padding: var(--pf-space-4xs) var(--pf-space-xs);
+  border-radius: var(--pf-radius-sm);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-default);
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-medium);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pf-text-secondary);
+}
+
+.pf-hero-arrival-status-dot {
+  color: var(--pf-status-success);
+}
+
+.pf-hero-arrival-meta {
+  display: flex;
+  align-items: center;
+}
+
+/* Typography Hierarchy */
+.pf-hero-arrival-header {
+  gap: var(--pf-space-3xs);
+}
+
+.pf-hero-arrival-kicker {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  color: var(--pf-accent-primary);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.pf-hero-arrival-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2.5rem, 1.8rem + 4vw, 5rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-none);
+  letter-spacing: var(--pf-tracking-tighter);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-hero-arrival-tagline {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.125rem, 0.95rem + 1vw, 1.75rem);
+  font-weight: var(--pf-font-weight-medium);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-hero-arrival-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lead);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  max-width: var(--pf-width-readable);
+  margin: 0;
+}
+
+/* Three Experiential Horizon Observation Cards */
+.pf-hero-arrival-pillars {
+  display: grid;
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  width: 100%;
+}
+
+.pf-hero-arrival-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-md);
+  background-color: var(--pf-surface-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-xs);
+  transition:
+    border-color var(--pf-transition-fast),
+    transform var(--pf-transition-fast),
+    box-shadow var(--pf-transition-fast);
+}
+
+.pf-hero-arrival-card:hover {
+  border-color: var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-1px);
+}
+
+.pf-hero-arrival-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-xs);
+}
+
+.pf-hero-arrival-card-index {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  color: var(--pf-accent-primary);
+}
+
+.pf-hero-arrival-card-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-hero-arrival-card-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* Actions & CTAs */
+.pf-hero-arrival-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-sm);
+  padding-block-start: var(--pf-space-2xs);
+}
+
+.pf-hero-arrival-arrow {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+  margin-inline-start: var(--pf-space-3xs);
+}
+
+.pf-hero-arrival-cta-primary:hover .pf-hero-arrival-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-hero-arrival-card:hover {
+    transform: none;
+  }
+  .pf-hero-arrival-cta-primary:hover .pf-hero-arrival-arrow {
+    transform: none;
+  }
+}
+
+/* Narrow viewport adaptations (320px - 480px) */
+@media (max-width: 480px) {
+  .pf-hero-arrival-statusbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--pf-space-2xs);
+  }
+
+  .pf-hero-arrival-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pf-hero-arrival-actions > .pf-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

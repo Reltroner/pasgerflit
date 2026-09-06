@@ -4,6 +4,7 @@ import {
   ROUTES,
   PRIMARY_NAV_ITEMS,
 } from "@/lib/navigation";
+import { ArrivalHero } from "@/components/hero";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -47,60 +48,12 @@ export function HomepageExperience({
   return (
     <div className={`pf-homepage-experience ${className || ""}`.trim()}>
       {/* ====================================================================
-          Stage 1: Arrival Experience
+          Stage 1: Arrival Experience ("Enter Pasgerflit")
           Purpose: The visitor enters Pasgerflit and immediately receives
-                   a sense of place.
+                   a sense of place. Realized via ArrivalHero.
           ==================================================================== */}
-      {arrivalSlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-arrival"
-          data-experience="arrival"
-          aria-labelledby="pf-exp-arrival-title"
-        >
-          <div className="pf-container">
-            <div className="pf-surface pf-surface-bordered pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-info">ASTHORTERA</span>
-                  <span className="pf-text-operational">SECTOR 01 // SKY NATION</span>
-                </div>
-                <h1 id="pf-exp-arrival-title" className="pf-text-display">
-                  Touchdown in Pasgerflit
-                </h1>
-                <p className="pf-text-lead">
-                  Step into the sovereign sky nation of Asthortera. Here, aviation is not merely transit—it is the foundational organizing logic of civic community, culture, and architecture.
-                </p>
-              </div>
+      {arrivalSlot ?? <ArrivalHero />}
 
-              <div className="pf-grid pf-grid-2col">
-                <div className="pf-surface-subtle pf-stack pf-stack-xs">
-                  <span className="pf-text-operational">SENSE OF PLACE // IMMERSION</span>
-                  <h2 className="pf-text-subsection-heading">The Altitude of Daily Life</h2>
-                  <p className="pf-text-body pf-text-secondary">
-                    High ceilings, open observation horizons, and the quiet hum of synchronized air traffic. Visitors arrive not at a sterile checkpoint, but into an expansive civic sphere shaped by purposeful movement.
-                  </p>
-                </div>
-                <div className="pf-surface-subtle pf-stack pf-stack-xs">
-                  <span className="pf-text-operational">CIVILIZATION LOGIC // INSIGHT</span>
-                  <h2 className="pf-text-subsection-heading">Organized Around Flight</h2>
-                  <p className="pf-text-body pf-text-secondary">
-                    In Pasgerflit, aerodromes operate as public forums, skyways form community avenues, and aeronautical infrastructure coordinates social connection across regions with quiet precision.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pf-row pf-row-sm">
-                <Link href={ROUTES.CIVILIZATION} className="pf-button pf-button-primary">
-                  Explore Civilization
-                </Link>
-                <Link href={ROUTES.EXPLORE} className="pf-button pf-button-secondary">
-                  Begin Journey
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ====================================================================
           Stage 2: Civilization Experience
