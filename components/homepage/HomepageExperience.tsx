@@ -8,6 +8,7 @@ import { ArrivalHero } from "@/components/hero";
 import { CivilizationExperience } from "@/components/civilization";
 import { MobilityExperience } from "@/components/aviation";
 import { LivingExperience } from "@/components/city";
+import { PAIAExperience } from "@/components/airport";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -86,55 +87,9 @@ export function HomepageExperience({
           Stage 5: PAIA Experience
           Purpose: Establish PAIA as the national aviation megastructure and
                    gateway into the deeper Pasgerflit experience.
+                   Realized via PAIAExperience.
           ==================================================================== */}
-      {paiaSlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-paia"
-          data-experience="paia"
-          aria-labelledby="pf-exp-paia-title"
-        >
-          <div className="pf-container">
-            <div className="pf-surface pf-surface-bordered pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-warning">NATIONAL MEGASTRUCTURE</span>
-                  <span className="pf-text-operational">PAIA // AIR GATEWAY</span>
-                </div>
-                <h2 id="pf-exp-paia-title" className="pf-text-section-heading">
-                  PAIA: The Sovereign Aviation Megastructure
-                </h2>
-                <p className="pf-text-lead">
-                  Pasgerflit Aviation Infrastructure Architecture (PAIA) is the monumental engineering apex of the civilization—integrating air traffic command, international passenger terminals, and inter-regional corridors.
-                </p>
-              </div>
-
-              <div className="pf-grid pf-grid-2col">
-                <div className="pf-surface-subtle pf-stack pf-stack-xs">
-                  <span className="pf-text-operational">GATEWAY TO ASTHORTERA</span>
-                  <h3 className="pf-text-subsection-heading">The Gateway Experience</h3>
-                  <p className="pf-text-body pf-text-secondary">
-                    PAIA serves as the primary portal through which visitors encounter Pasgerflit&apos;s architectural grandeur: sweeping canopies, quiet electric propulsion bays, and crystal-clear acoustic design.
-                  </p>
-                </div>
-
-                <div className="pf-surface-subtle pf-stack pf-stack-xs">
-                  <span className="pf-text-operational">MEGASTRUCTURE LOGIC</span>
-                  <h3 className="pf-text-subsection-heading">Coordinated Operations</h3>
-                  <p className="pf-text-body pf-text-secondary">
-                    Beyond its visual scale, PAIA powers the continuous synchronization of domestic fleets, regional flight paths, and sovereign sky border navigation.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pf-row">
-                <Link href={ROUTES.AIRPORTS} className="pf-button pf-button-primary">
-                  Explore PAIA & Airports
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {paiaSlot ?? <PAIAExperience />}
 
       {/* ====================================================================
           Stage 6: Discovery / Return Experience

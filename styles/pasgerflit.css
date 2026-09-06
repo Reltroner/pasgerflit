@@ -3047,6 +3047,582 @@ textarea {
   }
 }
 
+/* ==========================================================================
+   6. Phase 2 Component Experiences — 5.5 PAIA Experience
+   ========================================================================== */
 
+.pf-paia-experience {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--pf-surface-page);
+  border-block-end: 1px solid var(--pf-border-default);
+  padding-block: clamp(3.5rem, 2.5rem + 5vw, 7.5rem);
+}
 
+.pf-paia-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
 
+/* Atmospheric terminal & aeropolis sky glow */
+.pf-paia-glow {
+  position: absolute;
+  right: -10%;
+  top: 15%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  background: radial-gradient(circle, var(--pf-accent-subtle) 0%, transparent 70%);
+  opacity: 0.6;
+}
+
+/* Monumental runway perspective lines */
+.pf-paia-runway-perspective {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background-image:
+    radial-gradient(ellipse 95% 70% at 50% 0%, var(--pf-accent-secondary-subtle) 0%, transparent 65%),
+    linear-gradient(to right, var(--pf-border-subtle) 1px, transparent 1px);
+  background-size: 100% 100%, clamp(6rem, 4rem + 4vw, 10rem) 100%;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 25%, transparent 85%);
+}
+
+/* Subtle vaulted canopy arch geometry */
+.pf-paia-arch-geometry {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 400px;
+  background: radial-gradient(ellipse at 50% 0%, var(--pf-surface-elevated) 0%, transparent 75%);
+  opacity: 0.35;
+  border-bottom: 1px solid var(--pf-border-subtle);
+}
+
+.pf-paia-container {
+  position: relative;
+  z-index: 1;
+}
+
+.pf-paia-content {
+  max-width: var(--pf-container-xl);
+  margin-inline: auto;
+}
+
+/* 1. Header & Location Bar */
+.pf-paia-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-paia-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2.25rem, 1.75rem + 2.75vw, 3.5rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  color: var(--pf-text-primary);
+  letter-spacing: var(--pf-tracking-tight);
+  margin: 0;
+}
+
+.pf-paia-lead {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-paia-location-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding: var(--pf-space-sm) var(--pf-space-md);
+  background-color: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-subtle);
+  border-inline-start: 3px solid var(--pf-accent-secondary);
+  border-radius: var(--pf-radius-sm);
+  margin-top: var(--pf-space-xs);
+}
+
+.pf-paia-location-summary {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-primary);
+}
+
+/* Common Section Headers */
+.pf-paia-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-paia-section-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-section-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 2. Metrics Grid (Canon Scale) */
+.pf-paia-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--pf-space-md);
+}
+
+.pf-paia-metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-lg);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  box-shadow: var(--pf-shadow-sm);
+  transition: transform var(--pf-transition-fast), border-color var(--pf-transition-fast), box-shadow var(--pf-transition-fast);
+}
+
+.pf-paia-metric-card:hover {
+  border-color: var(--pf-accent-border);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+.pf-paia-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-paia-metric-value {
+  font-family: var(--pf-font-mono);
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: 1.1;
+  color: var(--pf-accent-primary);
+  letter-spacing: var(--pf-tracking-tight);
+}
+
+.pf-paia-metric-label {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-md);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-metric-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-paia-scale-footnote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding: var(--pf-space-sm) var(--pf-space-md);
+  background: var(--pf-surface-subtle);
+  border: 1px dashed var(--pf-border-subtle);
+  border-radius: var(--pf-radius-sm);
+}
+
+.pf-paia-scale-footnote p {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* 3. Terminals Grid (Four Specialized Concourse Realms) */
+.pf-paia-terminals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--pf-space-md);
+}
+
+.pf-paia-terminal-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  padding: var(--pf-space-lg);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--pf-transition-fast), transform var(--pf-transition-fast);
+}
+
+.pf-paia-terminal-card:hover {
+  border-color: var(--pf-accent-border);
+  transform: translateY(-2px);
+}
+
+.pf-paia-terminal-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-xs);
+}
+
+.pf-paia-terminal-code {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-md);
+  font-weight: var(--pf-font-weight-bold);
+  color: var(--pf-accent-primary);
+  background: var(--pf-accent-subtle);
+  padding: var(--pf-space-3xs) var(--pf-space-xs);
+  border-radius: var(--pf-radius-xs);
+  border: 1px solid var(--pf-accent-border);
+  letter-spacing: var(--pf-tracking-wider);
+}
+
+.pf-paia-terminal-name {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-terminal-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+  flex-grow: 1;
+}
+
+.pf-paia-terminal-insight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding-top: var(--pf-space-xs);
+  border-top: 1px solid var(--pf-border-subtle);
+}
+
+.pf-paia-terminal-insight p {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  font-style: italic;
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* 4. Three Levels of PAIA: Layered Altitudes */
+.pf-paia-tiers-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-md);
+}
+
+.pf-paia-tier-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) 1fr;
+  gap: var(--pf-space-lg);
+  padding: var(--pf-space-lg);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  position: relative;
+  align-items: start;
+}
+
+.pf-paia-tier-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-paia-tier-level {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-xl);
+  font-weight: var(--pf-font-weight-bold);
+  color: var(--pf-accent-primary);
+  letter-spacing: var(--pf-tracking-wide);
+}
+
+.pf-paia-tier-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+}
+
+.pf-paia-tier-name {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-tier-text {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-paia-tier-destinations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  padding-top: var(--pf-space-2xs);
+  border-top: 1px solid var(--pf-border-subtle);
+}
+
+.pf-paia-tier-tags {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  color: var(--pf-accent-secondary);
+  line-height: var(--pf-leading-normal);
+  margin: 0;
+}
+
+/* 5. Systems Grid (Technology Supporting Human Dignity) */
+.pf-paia-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--pf-space-md);
+}
+
+.pf-paia-system-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-lg);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  transition: border-color var(--pf-transition-fast);
+}
+
+.pf-paia-system-card:hover {
+  border-color: var(--pf-accent-border);
+}
+
+.pf-paia-system-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pf-space-2xs);
+}
+
+.pf-paia-system-name {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-system-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 6. Human PAIA Stages (The 5-Stage Human Path) */
+.pf-paia-human-stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--pf-space-md);
+}
+
+.pf-paia-stage-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  padding: var(--pf-space-md);
+  background: var(--pf-surface-elevated);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-md);
+  position: relative;
+}
+
+.pf-paia-stage-num {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-bold);
+  color: var(--pf-accent-primary);
+  letter-spacing: var(--pf-tracking-wider);
+}
+
+.pf-paia-stage-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+}
+
+.pf-paia-stage-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  font-weight: var(--pf-font-weight-semibold);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-paia-stage-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* 7. PAIA As Symbol & Civilizational Statement */
+.pf-paia-symbol-banner {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  background: linear-gradient(135deg, var(--pf-surface-elevated) 0%, var(--pf-surface-page) 100%);
+  border: 1px solid var(--pf-accent-border);
+  border-radius: var(--pf-radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-lg);
+  box-shadow: var(--pf-shadow-md);
+}
+
+.pf-paia-symbol-glow {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 50%;
+  height: 140%;
+  background: radial-gradient(ellipse at center, var(--pf-accent-subtle) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.pf-paia-symbol-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-paia-quote {
+  font-family: var(--pf-font-serif, var(--pf-font-sans));
+  font-size: clamp(1.35rem, 1.15rem + 1vw, 2rem);
+  font-weight: var(--pf-font-weight-medium);
+  font-style: italic;
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+  border-inline-start: 3px solid var(--pf-accent-primary);
+  padding-inline-start: var(--pf-space-md);
+}
+
+.pf-paia-creed {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+  padding-inline-start: var(--pf-space-md);
+}
+
+.pf-paia-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-sm);
+  padding-inline-start: var(--pf-space-md);
+}
+
+.pf-paia-cta-arrow {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+  margin-inline-start: var(--pf-space-3xs);
+}
+
+.pf-paia-cta-primary:hover .pf-paia-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .pf-paia-metric-card:hover,
+  .pf-paia-terminal-card:hover {
+    transform: none;
+  }
+  .pf-paia-cta-primary:hover .pf-paia-cta-arrow {
+    transform: none;
+  }
+}
+
+/* Responsive Narrow Breakpoints */
+@media (max-width: 768px) {
+  .pf-paia-tier-card {
+    grid-template-columns: 1fr;
+    gap: var(--pf-space-sm);
+  }
+
+  .pf-paia-quote,
+  .pf-paia-creed,
+  .pf-paia-actions {
+    padding-inline-start: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .pf-paia-symbol-banner {
+    padding: var(--pf-space-md);
+  }
+
+  .pf-paia-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .pf-paia-actions > .pf-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
