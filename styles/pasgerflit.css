@@ -1677,6 +1677,8 @@ textarea {
   letter-spacing: var(--pf-tracking-widest);
   text-transform: uppercase;
   color: var(--pf-text-secondary);
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .pf-hero-arrival-status-dot {
@@ -1705,12 +1707,13 @@ textarea {
 
 .pf-hero-arrival-title {
   font-family: var(--pf-font-sans);
-  font-size: clamp(2.5rem, 1.8rem + 4vw, 5rem);
+  font-size: clamp(2rem, 1.5rem + 3.5vw, 4.75rem);
   font-weight: var(--pf-font-weight-bold);
   line-height: var(--pf-leading-none);
   letter-spacing: var(--pf-tracking-tighter);
   color: var(--pf-text-primary);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-hero-arrival-tagline {
@@ -1823,8 +1826,12 @@ textarea {
   }
 }
 
-/* Narrow viewport adaptations (320px - 480px) */
-@media (max-width: 480px) {
+/* Responsive Narrow Breakpoint (320px - 640px) */
+@media (max-width: 640px) {
+  .pf-hero-arrival-content {
+    gap: var(--pf-space-md);
+  }
+
   .pf-hero-arrival-statusbar {
     flex-direction: column;
     align-items: flex-start;
@@ -1834,11 +1841,14 @@ textarea {
   .pf-hero-arrival-actions {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
   }
 
   .pf-hero-arrival-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -1923,6 +1933,7 @@ textarea {
   letter-spacing: var(--pf-tracking-tight);
   color: var(--pf-text-primary);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-civ-lead {
@@ -1993,8 +2004,8 @@ textarea {
 /* Three Core Civilizational Principles Grid */
 .pf-civ-pillars {
   display: grid;
-  gap: var(--pf-space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--pf-space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   width: 100%;
 }
 
@@ -2155,15 +2166,25 @@ textarea {
 
 /* Responsive Narrow Breakpoint (320px - 640px) */
 @media (max-width: 640px) {
+  .pf-civ-content {
+    gap: var(--pf-space-lg);
+  }
+
   .pf-civ-doctrine-banner {
     flex-direction: column;
     gap: var(--pf-space-xs);
+    padding: var(--pf-space-md);
+  }
+
+  .pf-civ-card {
+    padding: var(--pf-space-md);
   }
 
   .pf-civ-network-bar {
     flex-direction: column;
     align-items: stretch;
     gap: var(--pf-space-md);
+    padding: var(--pf-space-md);
   }
 
   .pf-civ-actions {
@@ -2175,6 +2196,8 @@ textarea {
   .pf-civ-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -2252,6 +2275,7 @@ textarea {
   letter-spacing: var(--pf-tracking-tight);
   color: var(--pf-text-primary);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-mobility-lead {
@@ -2538,6 +2562,10 @@ textarea {
 
 /* Responsive Narrow Breakpoint (320px - 640px) */
 @media (max-width: 640px) {
+  .pf-mobility-content {
+    gap: var(--pf-space-lg);
+  }
+
   .pf-mobility-tier {
     flex-direction: column;
     gap: var(--pf-space-xs);
@@ -2553,6 +2581,14 @@ textarea {
     display: none;
   }
 
+  .pf-mobility-tier-card {
+    padding: var(--pf-space-md);
+  }
+
+  .pf-mobility-purpose-card {
+    padding: var(--pf-space-md);
+  }
+
   .pf-mobility-actions {
     flex-direction: column;
     align-items: stretch;
@@ -2562,6 +2598,8 @@ textarea {
   .pf-mobility-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -2641,6 +2679,7 @@ textarea {
   letter-spacing: var(--pf-tracking-tight);
   color: var(--pf-text-primary);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-living-lead {
@@ -3025,6 +3064,19 @@ textarea {
 
 /* Responsive Narrow Breakpoint (320px - 640px) */
 @media (max-width: 640px) {
+  .pf-living-content {
+    gap: var(--pf-space-lg);
+  }
+
+  .pf-living-district-card {
+    padding: var(--pf-space-md);
+  }
+
+  .pf-living-civic-card,
+  .pf-living-culture-card {
+    padding: var(--pf-space-md);
+  }
+
   .pf-living-skybrew-card {
     padding: var(--pf-space-md);
   }
@@ -3033,6 +3085,7 @@ textarea {
     flex-direction: column;
     align-items: stretch;
     gap: var(--pf-space-md);
+    padding: var(--pf-space-md);
   }
 
   .pf-living-actions {
@@ -3044,6 +3097,8 @@ textarea {
   .pf-living-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -3127,12 +3182,13 @@ textarea {
 
 .pf-paia-title {
   font-family: var(--pf-font-sans);
-  font-size: clamp(2.25rem, 1.75rem + 2.75vw, 3.5rem);
+  font-size: clamp(1.85rem, 1.4rem + 2.25vw, 3.5rem);
   font-weight: var(--pf-font-weight-bold);
   line-height: var(--pf-leading-tight);
   color: var(--pf-text-primary);
   letter-spacing: var(--pf-tracking-tight);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-paia-lead {
@@ -3190,7 +3246,7 @@ textarea {
 /* 2. Metrics Grid (Canon Scale) */
 .pf-paia-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--pf-space-md);
 }
 
@@ -3227,6 +3283,8 @@ textarea {
   line-height: 1.1;
   color: var(--pf-accent-primary);
   letter-spacing: var(--pf-tracking-tight);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .pf-paia-metric-label {
@@ -3418,7 +3476,7 @@ textarea {
 /* 5. Systems Grid (Technology Supporting Human Dignity) */
 .pf-paia-systems-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--pf-space-md);
 }
 
@@ -3598,12 +3656,19 @@ textarea {
 
 /* Responsive Narrow Breakpoints */
 @media (max-width: 768px) {
+  .pf-paia-content {
+    gap: var(--pf-space-xl);
+  }
+
   .pf-paia-tier-card {
     grid-template-columns: 1fr;
     gap: var(--pf-space-sm);
   }
 
-  .pf-paia-quote,
+  .pf-paia-quote {
+    padding-inline-start: var(--pf-space-sm);
+  }
+
   .pf-paia-creed,
   .pf-paia-actions {
     padding-inline-start: 0;
@@ -3611,6 +3676,21 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .pf-paia-content {
+    gap: var(--pf-space-lg);
+  }
+
+  .pf-paia-metric-card,
+  .pf-paia-terminal-card,
+  .pf-paia-tier-card,
+  .pf-paia-system-card {
+    padding: var(--pf-space-md);
+  }
+
+  .pf-paia-metric-value {
+    font-size: clamp(1.35rem, 1.15rem + 1vw, 1.85rem);
+  }
+
   .pf-paia-symbol-banner {
     padding: var(--pf-space-md);
   }
@@ -3624,6 +3704,8 @@ textarea {
   .pf-paia-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -3705,12 +3787,13 @@ textarea {
 
 .pf-discovery-title {
   font-family: var(--pf-font-sans);
-  font-size: clamp(2.25rem, 1.75rem + 2.75vw, 3.5rem);
+  font-size: clamp(1.85rem, 1.4rem + 2.25vw, 3.5rem);
   font-weight: var(--pf-font-weight-bold);
   line-height: var(--pf-leading-tight);
   color: var(--pf-text-primary);
   letter-spacing: var(--pf-tracking-tight);
   margin: 0;
+  max-width: var(--pf-width-readable);
 }
 
 .pf-discovery-lead {
@@ -3770,7 +3853,7 @@ textarea {
 /* 2. Pathways Grid (6 Dimensions) */
 .pf-discovery-pathways-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--pf-space-md);
 }
 
@@ -3999,10 +4082,19 @@ textarea {
 
 /* Responsive Narrow Breakpoint (320px - 640px) */
 @media (max-width: 640px) {
+  .pf-discovery-content {
+    gap: var(--pf-space-lg);
+  }
+
+  .pf-discovery-pathway-card {
+    padding: var(--pf-space-md);
+  }
+
   .pf-discovery-culmination {
     flex-direction: column;
     align-items: stretch;
     gap: var(--pf-space-md);
+    padding: var(--pf-space-md);
   }
 
   .pf-discovery-actions {
@@ -4014,11 +4106,39 @@ textarea {
   .pf-discovery-actions > .pf-button {
     width: 100%;
     justify-content: center;
+    white-space: normal;
+    text-align: center;
   }
 
   .pf-discovery-portal-bar {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--pf-space-xs);
+    padding: var(--pf-space-md);
   }
 }
+
+/* ==========================================================================
+   8. Phase 2 Ultrawide & High-Resolution Harmonization (>= 1600px)
+   ========================================================================== */
+
+@media (min-width: 1600px) {
+  .pf-hero-arrival,
+  .pf-civilization-experience,
+  .pf-mobility-experience,
+  .pf-living-experience,
+  .pf-paia-experience,
+  .pf-discovery-experience {
+    padding-block: clamp(4.5rem, 3.5rem + 3vw, 7.5rem);
+  }
+
+  .pf-hero-arrival-content,
+  .pf-civ-content,
+  .pf-mobility-content,
+  .pf-living-content,
+  .pf-paia-content,
+  .pf-discovery-content {
+    max-width: var(--pf-container-xl);
+  }
+}
+
