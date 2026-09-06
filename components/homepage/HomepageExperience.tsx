@@ -5,6 +5,7 @@ import {
   PRIMARY_NAV_ITEMS,
 } from "@/lib/navigation";
 import { ArrivalHero } from "@/components/hero";
+import { CivilizationExperience } from "@/components/civilization";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -54,74 +55,14 @@ export function HomepageExperience({
           ==================================================================== */}
       {arrivalSlot ?? <ArrivalHero />}
 
-
       {/* ====================================================================
           Stage 2: Civilization Experience
           Purpose: Explain, at a high level, what makes Pasgerflit a civilization
                    organized around aviation and movement.
+                   Realized via CivilizationExperience.
           ==================================================================== */}
-      {civilizationSlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-civilization"
-          data-experience="civilization"
-          aria-labelledby="pf-exp-civilization-title"
-        >
-          <div className="pf-container">
-            <div className="pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-neutral">CIVIC FOUNDATION</span>
-                  <span className="pf-text-operational">ORGANIZING LOGIC</span>
-                </div>
-                <h2 id="pf-exp-civilization-title" className="pf-text-section-heading">
-                  A Society Organized Around Movement
-                </h2>
-                <p className="pf-text-lead">
-                  Understand the societal architecture that sets Pasgerflit apart: where public institutions, territorial planning, and community identity originate from aeronautical harmony.
-                </p>
-              </div>
+      {civilizationSlot ?? <CivilizationExperience />}
 
-              <div className="pf-grid pf-grid-3col">
-                <div className="pf-card">
-                  <div className="pf-card-body pf-stack pf-stack-xs">
-                    <span className="pf-text-operational">INSTITUTION</span>
-                    <h3 className="pf-text-subsection-heading">Airport as Civic Center</h3>
-                    <p className="pf-text-body pf-text-secondary">
-                      Terminals are not borders or barriers; they function as town halls, debate forums, cultural libraries, and shared assembly spaces for local citizens.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pf-card">
-                  <div className="pf-card-body pf-stack pf-stack-xs">
-                    <span className="pf-text-operational">URBAN DESIGN</span>
-                    <h3 className="pf-text-subsection-heading">Aerodrome Urbanism</h3>
-                    <p className="pf-text-body pf-text-secondary">
-                      Metropolitan layouts are engineered around runway axes, atmospheric glide paths, and multi-tier transit integration rather than congested road grids.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pf-card">
-                  <div className="pf-card-body pf-stack pf-stack-xs">
-                    <span className="pf-text-operational">PHILOSOPHY</span>
-                    <h3 className="pf-text-subsection-heading">Purposeful Movement</h3>
-                    <p className="pf-text-body pf-text-secondary">
-                      Motion in Pasgerflit is intentional and dignified. Every sky corridor balances technological velocity with human stillness, clarity, and safety.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pf-row">
-                <Link href={ROUTES.CIVILIZATION} className="pf-button pf-button-secondary">
-                  Read Civilization Overview
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ====================================================================
           Stage 3: Mobility Experience

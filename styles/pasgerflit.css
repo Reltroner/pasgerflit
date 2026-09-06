@@ -1842,3 +1842,340 @@ textarea {
   }
 }
 
+/* ==========================================================================
+   5. Phase 2 Component Experiences — 5.2 Civilization Experience
+   ========================================================================== */
+
+.pf-civilization-experience {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--pf-surface-page);
+  border-block-end: 1px solid var(--pf-border-default);
+  padding-block: clamp(3rem, 2.2rem + 4vw, 6.5rem);
+}
+
+.pf-civ-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Subtle civic grid & corridor guide */
+.pf-civ-grid-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(to right, var(--pf-border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pf-border-subtle) 1px, transparent 1px);
+  background-size: clamp(4rem, 3rem + 3vw, 8rem) clamp(4rem, 3rem + 3vw, 8rem);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+}
+
+/* Vertical civic axis / runway centerline guide */
+.pf-civ-centerline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--pf-accent-primary) 15%,
+    var(--pf-border-subtle) 50%,
+    var(--pf-border-subtle) 85%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+.pf-civ-container {
+  position: relative;
+  z-index: 1;
+}
+
+.pf-civ-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xl);
+  max-width: var(--pf-container-xl);
+  margin-inline: auto;
+}
+
+/* Header */
+.pf-civ-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-civ-title {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: var(--pf-leading-tight);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-civ-lead {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lead);
+  line-height: var(--pf-leading-relaxed);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+/* Central Philosophical Doctrine Banner */
+.pf-civ-doctrine-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pf-space-md);
+  padding: var(--pf-space-md) var(--pf-space-lg);
+  background: linear-gradient(
+    135deg,
+    var(--pf-surface-1) 0%,
+    var(--pf-surface-2) 100%
+  );
+  border: 1px solid var(--pf-border-strong);
+  border-inline-start: 4px solid var(--pf-accent-secondary);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: var(--pf-shadow-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-civ-doctrine-quote-mark {
+  font-family: var(--pf-font-sans);
+  font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
+  font-weight: var(--pf-font-weight-bold);
+  line-height: 0.8;
+  color: var(--pf-accent-secondary);
+  opacity: 0.5;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.pf-civ-doctrine-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+}
+
+.pf-civ-doctrine-quote {
+  margin: 0;
+  padding: 0;
+  font-family: var(--pf-font-sans);
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  letter-spacing: var(--pf-tracking-tight);
+  font-style: normal;
+}
+
+.pf-civ-doctrine-attribution {
+  margin: 0;
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  letter-spacing: var(--pf-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+/* Three Core Civilizational Principles Grid */
+.pf-civ-pillars {
+  display: grid;
+  gap: var(--pf-space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  width: 100%;
+}
+
+.pf-civ-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-sm);
+  padding: var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-xl);
+  box-shadow: var(--pf-shadow-xs);
+  transition:
+    border-color var(--pf-transition-fast),
+    box-shadow var(--pf-transition-fast),
+    transform var(--pf-transition-fast);
+  position: relative;
+}
+
+.pf-civ-card:hover {
+  border-color: var(--pf-border-strong);
+  box-shadow: var(--pf-shadow-md);
+  transform: translateY(-2px);
+}
+
+.pf-civ-card-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-xs);
+  padding-block-end: var(--pf-space-3xs);
+  border-block-end: 1px solid var(--pf-border-subtle);
+}
+
+.pf-civ-card-code {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-widest);
+  text-transform: uppercase;
+  color: var(--pf-accent-primary);
+}
+
+.pf-civ-dot {
+  color: var(--pf-accent-secondary);
+}
+
+.pf-civ-card-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xl);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  letter-spacing: var(--pf-tracking-tight);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-civ-card-body {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-base);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.pf-civ-card-civic-cue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-4xs);
+  padding: var(--pf-space-xs) var(--pf-space-sm);
+  background-color: var(--pf-surface-2);
+  border: 1px solid var(--pf-border-subtle);
+  border-radius: var(--pf-radius-md);
+  margin-block-start: var(--pf-space-xs);
+}
+
+.pf-civ-cue-label {
+  font-family: var(--pf-font-mono);
+  font-size: var(--pf-font-size-2xs);
+  font-weight: var(--pf-font-weight-semibold);
+  letter-spacing: var(--pf-tracking-wider);
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.pf-civ-cue-text {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-xs);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+}
+
+/* Network Connection & Ethical Sovereignty Bar */
+.pf-civ-network-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pf-space-lg);
+  flex-wrap: wrap;
+  padding: var(--pf-space-lg);
+  background-color: var(--pf-surface-1);
+  border: 1px solid var(--pf-border-default);
+  border-radius: var(--pf-radius-xl);
+  box-shadow: var(--pf-shadow-xs);
+}
+
+.pf-civ-network-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-space-3xs);
+  max-width: var(--pf-width-readable);
+}
+
+.pf-civ-network-title {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-lg);
+  font-weight: var(--pf-font-weight-semibold);
+  line-height: var(--pf-leading-snug);
+  color: var(--pf-text-primary);
+  margin: 0;
+}
+
+.pf-civ-network-desc {
+  font-family: var(--pf-font-sans);
+  font-size: var(--pf-font-size-sm);
+  line-height: var(--pf-leading-normal);
+  color: var(--pf-text-secondary);
+  margin: 0;
+}
+
+.pf-civ-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pf-space-sm);
+  flex-shrink: 0;
+}
+
+.pf-civ-cta-arrow {
+  display: inline-block;
+  transition: transform var(--pf-transition-fast);
+  margin-inline-start: var(--pf-space-3xs);
+}
+
+.pf-civ-cta-primary:hover .pf-civ-cta-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-civ-card:hover {
+    transform: none;
+  }
+  .pf-civ-cta-primary:hover .pf-civ-cta-arrow {
+    transform: none;
+  }
+}
+
+/* Responsive Narrow Breakpoint (320px - 640px) */
+@media (max-width: 640px) {
+  .pf-civ-doctrine-banner {
+    flex-direction: column;
+    gap: var(--pf-space-xs);
+  }
+
+  .pf-civ-network-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--pf-space-md);
+  }
+
+  .pf-civ-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .pf-civ-actions > .pf-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
