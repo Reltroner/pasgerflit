@@ -6,6 +6,7 @@ import {
 } from "@/lib/navigation";
 import { ArrivalHero } from "@/components/hero";
 import { CivilizationExperience } from "@/components/civilization";
+import { MobilityExperience } from "@/components/aviation";
 
 export interface HomepageExperienceProps {
   arrivalSlot?: ReactNode;
@@ -63,66 +64,14 @@ export function HomepageExperience({
           ==================================================================== */}
       {civilizationSlot ?? <CivilizationExperience />}
 
-
       {/* ====================================================================
           Stage 3: Mobility Experience
           Purpose: Introduce aviation, airgrid, transportation and movement as
                    infrastructure of everyday life.
+                   Realized via MobilityExperience.
           ==================================================================== */}
-      {mobilitySlot ?? (
-        <section
-          className="pf-section pf-experience-stage pf-experience-mobility"
-          data-experience="mobility"
-          aria-labelledby="pf-exp-mobility-title"
-        >
-          <div className="pf-container">
-            <div className="pf-stack pf-stack-lg">
-              <div className="pf-stack pf-stack-xs">
-                <div className="pf-row pf-row-sm">
-                  <span className="pf-badge pf-badge-neutral">AIRGRID & TRANSIT</span>
-                  <span className="pf-text-operational">INFRASTRUCTURE</span>
-                </div>
-                <h2 id="pf-exp-mobility-title" className="pf-text-section-heading">
-                  Aviation as Everyday Infrastructure
-                </h2>
-                <p className="pf-text-lead">
-                  Aviation in Pasgerflit is not an occasional journey or distant privilege. It operates as the continuous atmospheric circulatory system supporting daily life.
-                </p>
-              </div>
+      {mobilitySlot ?? <MobilityExperience />}
 
-              <div className="pf-grid pf-grid-2col">
-                <div className="pf-surface pf-surface-subtle pf-stack pf-stack-sm">
-                  <span className="pf-text-operational">AIRGRID ARCHITECTURE</span>
-                  <h3 className="pf-text-subsection-heading">Multi-Layered Corridors</h3>
-                  <p className="pf-text-body pf-text-secondary">
-                    The national airgrid divides atmospheric space into synchronized velocity strata—from local short-hop airlinks to high-altitude inter-territorial vectors.
-                  </p>
-                  <p className="pf-text-caption">
-                    Autonomous telemetry and air traffic architecture ensure smooth separation and effortless reliability.
-                  </p>
-                </div>
-
-                <div className="pf-surface pf-surface-subtle pf-stack pf-stack-sm">
-                  <span className="pf-text-operational">COMMUTER RHYTHM</span>
-                  <h3 className="pf-text-subsection-heading">Effortless Boarding & Movement</h3>
-                  <p className="pf-text-body pf-text-secondary">
-                    Commuting by air feels as fluid and natural as walking through a neighborhood colonnade. Seamless access corridors connect residences to regional sky shuttles.
-                  </p>
-                  <p className="pf-text-caption">
-                    Transit without friction: eliminating queuing fatigue through human-centered terminal flow.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pf-row">
-                <Link href={ROUTES.AVIATION} className="pf-button pf-button-secondary">
-                  Explore Aviation Network
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ====================================================================
           Stage 4: Living Experience
